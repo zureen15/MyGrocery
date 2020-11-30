@@ -1,0 +1,82 @@
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router'; //imports Router
+import { MyCartService } from 'src/app/my-cart.service';//imports MyCartService service
+import { ModalController, AlertController} from '@ionic/angular'; //imports ModalController and AlertController
+import { AngularFirestore } from '@angular/fire/firestore'; //imports Firestore database from Firebase
+import { Observable } from 'rxjs'; //imports Observable
+import firebase from 'firebase/app';
+import 'firebase/firestore';
+
+
+@Component({
+  selector: 'app-my-cart',
+  templateUrl: './my-cart.page.html',
+  styleUrls: ['./my-cart.page.scss'],
+})
+export class MyCartPage implements OnInit {
+
+  cart = []; //cart variable declared
+
+    selectedProducts = []; //selectedProducts variable declared
+
+    total = 0; //total variable declared
+    
+    private products: Observable<any[]>; //products observable declared
+
+
+    constructor(private firestore: AngularFirestore, private router: Router, private MyCartService: MyCartService, private modalCtrl: ModalController, private alertController: AlertController) { }
+    //Firestore, CartService, Router, ModalController and AlertController components declared in constructor class
+
+  ngOnInit() {
+
+    
+    this.products = this.MyCartService.getProducts();
+    this.cart = this.MyCartService.getCart();
+  }
+
+   //ngOnInit method declares getProducts and getCart methods and initialised from within the CartService
+
+   addToCart(products) {
+    this.MyCartService.addProduct(products);
+}
+//addToCart method declared and initialised from the addProduct method from within the CartService
+
+
+remove(products) {
+    this.MyCartService.removeItemFromCart(products);
+}
+//remove method declared and initialised from the removeItemFromCart method from within the CartService
+
+getTotal(){
+    return this.cart.reduce((i, j) => i + j.price * j.amount, 0 );
+}
+//getTotal method declared and the reduce function declares the accumulated result of the array which is the price multipled by the amount
+
+empty(products) {
+    this.MyCartService.emptyCart(products);
+}
+//remove method declared and initialised from the removeItemFromCart method from within the CartService
+
+close(){
+    this.modalCtrl.dismiss();
+}
+//close method declared and initialised from the modalController
+
+async cartEmpty() {
+    const alert = await this.alertController.create({
+      header: 'Cart is now empty!',
+      buttons: ['OK']
+   });
+
+   await alert.present();
+   this.modalCtrl.dismiss();
+
+}
+
+//cartEmpty method declared and displays an alert message to user when all items have been emptied from the cart using the trash button
+
+async checkout(){
+  this.router.navigate(['checkout']);
+  this.modalCtrl.dismiss();
+}
+}
