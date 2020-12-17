@@ -5,87 +5,1174 @@
         <ion-menu-button autoHide="false"></ion-menu-button>
       </ion-buttons>
   
+      <ion-buttons slot="end">
+          <ion-button (click)="openCart()">
+              <ion-badge *ngIf="cart.length > 0">{{ cart.length }}</ion-badge>
+              <ion-icon name="cart" slot="icon-only" color="secondary"></ion-icon>
+          </ion-button>
+      </ion-buttons>
   </ion-toolbar>
   </ion-header>    
-  
-      <ion-fab vertical="top" horizontal="end" slot="fixed">
-        <ion-fab-button *ngIf="cart.length > 0" (click)="openCart()"><!--openCart method declared-->
-            <ion-badge>{{ cart.length }}</ion-badge>
-            <ion-icon name="cart" size="large"></ion-icon>
-        </ion-fab-button>
-      </ion-fab> <!--Cart icon and button placed in top left of screen. Number of items in cart only displayed if cart total is greater than 1-->
-                  <!-- When cart icon clicked, user passed to cart model-->        
-      
+
     <ion-content>
-        <div class="horizontal-cards" *ngFor="let p of products | async">
-          <ion-card color="light" *ngIf="p.id == 1">
+
+        <ion-segment [(ngModel)]="selectTabs">
+          <ion-slides [options]="slideOpts">
+          <ion-slide>
+          <ion-segment-button value="0">
+            <ion-label> Ayam </ion-label>
+          </ion-segment-button>
+          </ion-slide>
+          
+          <ion-slide>
+          <ion-segment-button value="1">
+            <ion-label> Daging </ion-label>
+          </ion-segment-button>
+          </ion-slide>
+  
+          <ion-slide>
+          <ion-segment-button value="2">
+            <ion-label> Seafood </ion-label>
+          </ion-segment-button>
+         </ion-slide>
+
+         <ion-slide>
+          <ion-segment-button value="3">
+            <ion-label> Seafood </ion-label>
+          </ion-segment-button>
+         </ion-slide>
+  
+         <ion-slide>
+          <ion-segment-button value="4">
+            <ion-label> Sayur </ion-label>
+          </ion-segment-button>
+      </ion-slide>
+      </ion-slides>
+  </ion-segment>
+
+        
+          <div *ngIf="selectTabs == '0'">
+            
+            <ion-row>
+              <ion-col size ="6">
+            <div *ngFor="let p of products | async">
+                <ion-card color="light" *ngIf="p.id == 1">
+                    <ion-card-header>
+                        <img src="assets/icon/ayam.jpg" class="image"> <!--image path sets different product image for each product id-->
+                        <ion-card-title style="text-align: center;">{{p.name}}</ion-card-title>
+                        <ion-card-subtitle style="text-align: center;">({{p.description}})</ion-card-subtitle>
+                        <ion-card-subtitle>Harga: RM{{p.price}}</ion-card-subtitle>
+                        <ion-button expand="block" fill="outline" color="dark" (click)="addToCart(p)">
+                          <ion-icon name="cart" slot="icon-only" color="tertiary"></ion-icon>
+                        </ion-button>
+                    </ion-card-header>
+                </ion-card>
+            </div>
+          </ion-col>
+
+             <ion-col size ="6">
+            <div *ngFor="let p of products | async">
+                <ion-card color="light" *ngIf="p.id == 2">
+                    <ion-card-header>
+                        <img src="assets/icon/ayam1.jpg" class="image"> <!--image path sets different product image for each product id-->
+                        <ion-card-title style="text-align: center;">{{p.name}}</ion-card-title>
+                        <ion-card-subtitle style="text-align: center;">({{p.description}})</ion-card-subtitle>
+                        <ion-card-subtitle>Harga: RM{{p.price}}</ion-card-subtitle>
+                        <ion-button expand="block" fill="outline" color="dark" (click)="addToCart(p)">
+                          <ion-icon name="cart" slot="icon-only" color="tertiary"></ion-icon>
+                        </ion-button>
+                    </ion-card-header>
+                </ion-card>
+            </div>
+          </ion-col> 
+        </ion-row>
+
+           <ion-row>
+            <ion-col size ="6">
+          <div *ngFor="let p of products | async">
+              <ion-card color="light" *ngIf="p.id == 3">
+                  <ion-card-header>
+                      <img src="assets/icon/ayam2.jpg" class="image"> <!--image path sets different product image for each product id-->
+                      <ion-card-title style="text-align: center;">{{p.name}}</ion-card-title>
+                      <ion-card-subtitle style="text-align: center;">({{p.description}})</ion-card-subtitle>
+                      <ion-card-subtitle>Harga: RM{{p.price}}</ion-card-subtitle>
+                      <ion-button expand="block" fill="outline" color="dark" (click)="addToCart(p)">
+                        <ion-icon name="cart" slot="icon-only" color="tertiary"></ion-icon>
+                      </ion-button>
+                  </ion-card-header>
+              </ion-card>
+          </div>
+        </ion-col>
+
+        <ion-col size ="6">
+          <div *ngFor="let p of products | async">
+              <ion-card color="light" *ngIf="p.id == 20">
+                  <ion-card-header>
+                      <img src="assets/icon/ayam3.jpg" class="image"> <!--image path sets different product image for each product id-->
+                      <ion-card-title style="text-align: center;">{{p.name}}</ion-card-title>
+                      <ion-card-subtitle style="text-align: center;">({{p.description}})</ion-card-subtitle>
+                      <ion-card-subtitle>Harga: RM{{p.price}}</ion-card-subtitle>
+                      <ion-button expand="block" fill="outline" color="dark" (click)="addToCart(p)">
+                        <ion-icon name="cart" slot="icon-only" color="tertiary"></ion-icon>
+                      </ion-button>
+                  </ion-card-header>
+              </ion-card>
+          </div>
+        </ion-col>
+         </ion-row> 
+
+         <ion-row>
+          <ion-col size ="6">
+        <div *ngFor="let p of products | async">
+            <ion-card color="light" *ngIf="p.id == 21">
+                <ion-card-header>
+                    <img src="assets/icon/ayam4.jpg" class="image"> <!--image path sets different product image for each product id-->
+                    <ion-card-title style="text-align: center;">{{p.name}}</ion-card-title>
+                    <ion-card-subtitle style="text-align: center;">({{p.description}})</ion-card-subtitle>
+                    <ion-card-subtitle>Harga: RM{{p.price}}</ion-card-subtitle>
+                    <ion-button expand="block" fill="outline" color="dark" (click)="addToCart(p)">
+                      <ion-icon name="cart" slot="icon-only" color="tertiary"></ion-icon>
+                    </ion-button>
+                </ion-card-header>
+            </ion-card>
+        </div>
+      </ion-col>
+
+      <ion-col size ="6">
+        <div *ngFor="let p of products | async">
+            <ion-card color="light" *ngIf="p.id == 22">
+                <ion-card-header>
+                    <img src="assets/icon/ayam5.jpg" class="image"> <!--image path sets different product image for each product id-->
+                    <ion-card-title style="text-align: center;">{{p.name}}</ion-card-title>
+                    <ion-card-subtitle style="text-align: center;">({{p.description}})</ion-card-subtitle>
+                    <ion-card-subtitle>Harga: RM{{p.price}}</ion-card-subtitle>
+                    <ion-button expand="block" fill="outline" color="dark" (click)="addToCart(p)">
+                      <ion-icon name="cart" slot="icon-only" color="tertiary"></ion-icon>
+                    </ion-button>
+                </ion-card-header>
+            </ion-card>
+        </div>
+      </ion-col>
+       </ion-row> 
+          </div>
+
+          <div *ngIf="selectTabs == '1'">
+
+            <ion-row>
+              <ion-col size ="6">
+            <div *ngFor="let p of products | async">
+                <ion-card color="light" *ngIf="p.id == 4">
+                    <ion-card-header>
+                        <img src="assets/icon/daging-batang-pinang.jpg" class="image"> <!--image path sets different product image for each product id-->
+                        <ion-card-title style="text-align: center;">{{p.name}}</ion-card-title>
+                        <ion-card-subtitle style="text-align: center;">({{p.description}})</ion-card-subtitle>
+                        <ion-card-subtitle>Harga: RM{{p.price}}</ion-card-subtitle>
+                        <ion-button expand="block" fill="outline" color="dark" (click)="addToCart(p)">
+                          <ion-icon name="cart" slot="icon-only" color="tertiary"></ion-icon>
+                        </ion-button>
+                    </ion-card-header>
+                </ion-card>
+            </div>
+          </ion-col>
+
+             <ion-col size ="6">
+            <div *ngFor="let p of products | async">
+                <ion-card color="light" *ngIf="p.id == 5">
+                    <ion-card-header>
+                        <img src="assets/icon/daging.jpg" class="image"> <!--image path sets different product image for each product id-->
+                        <ion-card-title style="text-align: center;">{{p.name}}</ion-card-title>
+                        <ion-card-subtitle style="text-align: center;">({{p.description}})</ion-card-subtitle>
+                        <ion-card-subtitle>Harga: RM{{p.price}}</ion-card-subtitle>
+                        <ion-button expand="block" fill="outline" color="dark" (click)="addToCart(p)">
+                          <ion-icon name="cart" slot="icon-only" color="tertiary"></ion-icon>
+                        </ion-button>
+                    </ion-card-header>
+                </ion-card>
+            </div>
+          </ion-col> 
+           </ion-row> 
+            
+           <ion-row>
+            <ion-col size ="6">
+          <div *ngFor="let p of products | async">
+              <ion-card color="light" *ngIf="p.id == 6">
+                  <ion-card-header>
+                      <img src="assets/icon/daging-lembu-pejal.jpg" class="image"> <!--image path sets different product image for each product id-->
+                      <ion-card-title style="text-align: center;">{{p.name}}</ion-card-title>
+                      <ion-card-subtitle style="text-align: center;">({{p.description}})</ion-card-subtitle>
+                      <ion-card-subtitle>Harga: RM{{p.price}}</ion-card-subtitle>
+                      <ion-button expand="block" fill="outline" color="dark" (click)="addToCart(p)">
+                        <ion-icon name="cart" slot="icon-only" color="tertiary"></ion-icon>
+                      </ion-button>
+                  </ion-card-header>
+              </ion-card>
+          </div>
+        </ion-col>
+
+           <ion-col size ="6">
+          <div *ngFor="let p of products | async">
+              <ion-card color="light" *ngIf="p.id == 16">
+                  <ion-card-header>
+                      <img src="assets/icon/Beef Rib Eye (Frozen).jpg" class="image"> <!--image path sets different product image for each product id-->
+                      <ion-card-title style="text-align: center;">{{p.name}}</ion-card-title>
+                      <ion-card-subtitle style="text-align: center;">({{p.description}})</ion-card-subtitle>
+                      <ion-card-subtitle>Harga: RM{{p.price}}</ion-card-subtitle>
+                      <ion-button expand="block" fill="outline" color="dark" (click)="addToCart(p)">
+                        <ion-icon name="cart" slot="icon-only" color="tertiary"></ion-icon>
+                      </ion-button>
+                  </ion-card-header>
+              </ion-card>
+          </div>
+        </ion-col> 
+         </ion-row> 
+
+         <ion-row>
+          <ion-col size ="6">
+        <div *ngFor="let p of products | async">
+            <ion-card color="light" *ngIf="p.id == 17">
+                <ion-card-header>
+                    <img src="assets/icon/Beef Shortloin (Frozen).jpg" class="image"> <!--image path sets different product image for each product id-->
+                    <ion-card-title style="text-align: center;">{{p.name}}</ion-card-title>
+                    <ion-card-subtitle style="text-align: center;">({{p.description}})</ion-card-subtitle>
+                    <ion-card-subtitle>Harga: RM{{p.price}}</ion-card-subtitle>
+                    <ion-button expand="block" fill="outline" color="dark" (click)="addToCart(p)">
+                      <ion-icon name="cart" slot="icon-only" color="tertiary"></ion-icon>
+                    </ion-button>
+                </ion-card-header>
+            </ion-card>
+        </div>
+      </ion-col>
+
+         <ion-col size ="6">
+        <div *ngFor="let p of products | async">
+            <ion-card color="light" *ngIf="p.id == 18">
+                <ion-card-header>
+                    <img src="assets/icon/Beef Striploin (Frozen).jpg" class="image"> <!--image path sets different product image for each product id-->
+                    <ion-card-title style="text-align: center;">{{p.name}}</ion-card-title>
+                    <ion-card-subtitle style="text-align: center;">({{p.description}})</ion-card-subtitle>
+                    <ion-card-subtitle>Harga: RM{{p.price}}</ion-card-subtitle>
+                    <ion-button expand="block" fill="outline" color="dark" (click)="addToCart(p)">
+                      <ion-icon name="cart" slot="icon-only" color="tertiary"></ion-icon>
+                    </ion-button>
+                </ion-card-header>
+            </ion-card>
+        </div>
+      </ion-col> 
+       </ion-row> 
+
+       <ion-row>
+        <ion-col size ="6">
+      <div *ngFor="let p of products | async">
+          <ion-card color="light" *ngIf="p.id == 19">
               <ion-card-header>
-                  <img src="assets/icon/ayam.jpg" class="image"> <!--image path sets different product image for each product id-->
-                  <ion-card-title>{{p.name}}</ion-card-title>
-                  <ion-card-subtitle>Description:{{p.description}}</ion-card-subtitle>
-                  <ion-card-subtitle>Price: RM{{p.price}}</ion-card-subtitle>
-                  <ion-button expand="block" fill="outline" shape="round" color="dark" (click)="addToCart(p)">
-                      Add to Cart
+                  <img src="assets/icon/short-ribs.jpg" class="image"> <!--image path sets different product image for each product id-->
+                  <ion-card-title style="text-align: center;">{{p.name}}</ion-card-title>
+                  <ion-card-subtitle style="text-align: center;">({{p.description}})</ion-card-subtitle>
+                  <ion-card-subtitle>Harga: RM{{p.price}}</ion-card-subtitle>
+                  <ion-button expand="block" fill="outline" color="dark" (click)="addToCart(p)">
+                    <ion-icon name="cart" slot="icon-only" color="tertiary"></ion-icon>
                   </ion-button>
               </ion-card-header>
           </ion-card>
-        </div>
-  
-      <div class="horizontal-cards"*ngFor="let p of products | async">
-        <ion-card color="light" *ngIf="p.id == 2">
+      </div>
+    </ion-col>
+
+    <ion-col size ="6">
+      <div *ngFor="let p of products | async">
+          <ion-card color="light" *ngIf="p.id == 28">
+              <ion-card-header>
+                  <img src="assets/icon/beef-rib-eye-cut.jpg" class="image"> <!--image path sets different product image for each product id-->
+                  <ion-card-title style="text-align: center;">{{p.name}}</ion-card-title>
+                  <ion-card-subtitle style="text-align: center;">({{p.description}})</ion-card-subtitle>
+                  <ion-card-subtitle>Harga: RM{{p.price}}</ion-card-subtitle>
+                  <ion-button expand="block" fill="outline" color="dark" (click)="addToCart(p)">
+                    <ion-icon name="cart" slot="icon-only" color="tertiary"></ion-icon>
+                  </ion-button>
+              </ion-card-header>
+          </ion-card>
+      </div>
+    </ion-col>
+     </ion-row>
+
+     <ion-row>
+      <ion-col size ="6">
+    <div *ngFor="let p of products | async">
+        <ion-card color="light" *ngIf="p.id == 26">
             <ion-card-header>
-                <img src="assets/icon/daging.jpg" class="image"> <!--image path sets different product image for each product id-->
-                <ion-card-title>{{p.name}}</ion-card-title>
-                <ion-card-subtitle>Description:{{p.description}}</ion-card-subtitle>
-                <ion-card-subtitle>Price: RM{{p.price}}</ion-card-subtitle>
-                <ion-button expand="block" fill="outline" shape="round" color="dark" (click)="addToCart(p)">
-                    Add to Cart
+                <img src="assets/icon/perut-lembu.jpg" class="image"> <!--image path sets different product image for each product id-->
+                <ion-card-title style="text-align: center;">{{p.name}}</ion-card-title>
+                <ion-card-subtitle style="text-align: center;">({{p.description}})</ion-card-subtitle>
+                <ion-card-subtitle>Harga: RM{{p.price}}</ion-card-subtitle>
+                <ion-button expand="block" fill="outline" color="dark" (click)="addToCart(p)">
+                  <ion-icon name="cart" slot="icon-only" color="tertiary"></ion-icon>
                 </ion-button>
             </ion-card-header>
         </ion-card>
-      </div>
-  
-    <div class="horizontal-cards" *ngFor="let p of products | async">
-      <ion-card color="light" *ngIf="p.id == 3">
-          <ion-card-header>
-              <img src="assets/icon/ikan.jpg" class="image"> <!--image path sets different product image for each product id-->
-              <ion-card-title>{{p.name}}</ion-card-title>
-              <ion-card-subtitle>Description:{{p.description}}</ion-card-subtitle>
-              <ion-card-subtitle>Price: RM{{p.price}}</ion-card-subtitle>
-              <ion-button expand="block" fill="outline" shape="round" color="dark" (click)="addToCart(p)">
-                  Add to Cart
-              </ion-button>
-          </ion-card-header>
-      </ion-card>
     </div>
+  </ion-col>
+
+  <ion-col size ="6">
+    <div *ngFor="let p of products | async">
+        <ion-card color="light" *ngIf="p.id == 27">
+            <ion-card-header>
+                <img src="assets/icon/jantung-lembu.jpg" class="image"> <!--image path sets different product image for each product id-->
+                <ion-card-title style="text-align: center;">{{p.name}}</ion-card-title>
+                <ion-card-subtitle style="text-align: center;">({{p.description}})</ion-card-subtitle>
+                <ion-card-subtitle>Harga: RM{{p.price}}</ion-card-subtitle>
+                <ion-button expand="block" fill="outline" color="dark" (click)="addToCart(p)">
+                  <ion-icon name="cart" slot="icon-only" color="tertiary"></ion-icon>
+                </ion-button>
+            </ion-card-header>
+        </ion-card>
+    </div>
+  </ion-col>
+   </ion-row> 
+      
+          </div>
+        
+          <div *ngIf="selectTabs == '2'">
+            <ion-row>
+              <ion-col size ="6">
+            <div *ngFor="let p of products | async">
+                <ion-card color="light" *ngIf="p.id == 7">
+                    <ion-card-header>
+                        <img src="assets/icon/ikan-tongkol-putih.jpg" class="image"> <!--image path sets different product image for each product id-->
+                        <ion-card-title style="text-align: center;">{{p.name}}</ion-card-title>
+                        <ion-card-subtitle style="text-align: center;">({{p.description}})</ion-card-subtitle>
+                        <ion-card-subtitle>Harga: RM{{p.price}}</ion-card-subtitle>
+                        <ion-button expand="block" fill="outline" color="dark" (click)="addToCart(p)">
+                          <ion-icon name="cart" slot="icon-only" color="tertiary"></ion-icon>
+                        </ion-button>
+                    </ion-card-header>
+                </ion-card>
+            </div>
+          </ion-col>
+
+             <ion-col size ="6">
+            <div *ngFor="let p of products | async">
+                <ion-card color="light" *ngIf="p.id == 8">
+                    <ion-card-header>
+                        <img src="assets/icon/ikan-nyok.jpg" class="image"> <!--image path sets different product image for each product id-->
+                        <ion-card-title style="text-align: center;">{{p.name}}</ion-card-title>
+                        <ion-card-subtitle style="text-align: center;">({{p.description}})</ion-card-subtitle>
+                        <ion-card-subtitle>Harga: RM{{p.price}}</ion-card-subtitle>
+                        <ion-button expand="block" fill="outline" color="dark" (click)="addToCart(p)">
+                          <ion-icon name="cart" slot="icon-only" color="tertiary"></ion-icon>
+                        </ion-button>
+                    </ion-card-header>
+                </ion-card>
+            </div>
+          </ion-col> 
+           </ion-row>
+           
+           <ion-row>
+            <ion-col size ="6">
+          <div *ngFor="let p of products | async">
+              <ion-card color="light" *ngIf="p.id == 9">
+                  <ion-card-header>
+                      <img src="assets/icon/ikan-tenggiri.jpg" class="image"> <!--image path sets different product image for each product id-->
+                      <ion-card-title style="text-align: center;">{{p.name}}</ion-card-title>
+                      <ion-card-subtitle style="text-align: center;">({{p.description}})</ion-card-subtitle>
+                      <ion-card-subtitle>Harga: RM{{p.price}}</ion-card-subtitle>
+                      <ion-button expand="block" fill="outline" color="dark" (click)="addToCart(p)">
+                        <ion-icon name="cart" slot="icon-only" color="tertiary"></ion-icon>
+                      </ion-button>
+                  </ion-card-header>
+              </ion-card>
+          </div>
+        </ion-col>
+
+           <ion-col size ="6">
+          <div *ngFor="let p of products | async">
+              <ion-card color="light" *ngIf="p.id == 10">
+                  <ion-card-header>
+                      <img src="assets/icon/bawal-hitam.jpg" class="image"> <!--image path sets different product image for each product id-->
+                      <ion-card-title style="text-align: center;">{{p.name}}</ion-card-title>
+                      <ion-card-subtitle style="text-align: center;">({{p.description}})</ion-card-subtitle>
+                      <ion-card-subtitle>Harga: RM{{p.price}}</ion-card-subtitle>
+                      <ion-button expand="block" fill="outline" color="dark" (click)="addToCart(p)">
+                        <ion-icon name="cart" slot="icon-only" color="tertiary"></ion-icon>
+                      </ion-button>
+                  </ion-card-header>
+              </ion-card>
+          </div>
+        </ion-col> 
+         </ion-row>
+
+         <ion-row>
+          <ion-col size ="6">
+        <div *ngFor="let p of products | async">
+            <ion-card color="light" *ngIf="p.id == 31">
+                <ion-card-header>
+                    <img src="assets/icon/ikan-kerisi.jpg" class="image"> <!--image path sets different product image for each product id-->
+                    <ion-card-title style="text-align: center;">{{p.name}}</ion-card-title>
+                    <ion-card-subtitle style="text-align: center;">({{p.description}})</ion-card-subtitle>
+                    <ion-card-subtitle>Harga: RM{{p.price}}</ion-card-subtitle>
+                    <ion-button expand="block" fill="outline" color="dark" (click)="addToCart(p)">
+                      <ion-icon name="cart" slot="icon-only" color="tertiary"></ion-icon>
+                    </ion-button>
+                </ion-card-header>
+            </ion-card>
+        </div>
+      </ion-col>
   
-  <div class="horizontal-cards" *ngFor="let p of products | async">
-      <ion-card color="light" *ngIf="p.id == 4">
+         <ion-col size ="6">
+        <div *ngFor="let p of products | async">
+            <ion-card color="light" *ngIf="p.id == 32">
+                <ion-card-header>
+                    <img src="assets/icon/ikan-kembung.jpg" class="image"> <!--image path sets different product image for each product id-->
+                    <ion-card-title style="text-align: center;">{{p.name}}</ion-card-title>
+                    <ion-card-subtitle style="text-align: center;">({{p.description}})</ion-card-subtitle>
+                    <ion-card-subtitle>Harga: RM{{p.price}}</ion-card-subtitle>
+                    <ion-button expand="block" fill="outline" color="dark" (click)="addToCart(p)">
+                      <ion-icon name="cart" slot="icon-only" color="tertiary"></ion-icon>
+                    </ion-button>
+                </ion-card-header>
+            </ion-card>
+        </div>
+      </ion-col> 
+       </ion-row>
+
+         <ion-row>
+          <ion-col size ="6">
+        <div *ngFor="let p of products | async">
+            <ion-card color="light" *ngIf="p.id == 11">
+                <ion-card-header>
+                    <img src="assets/icon/bawal-putih.jpg" class="image"> <!--image path sets different product image for each product id-->
+                    <ion-card-title style="text-align: center;">{{p.name}}</ion-card-title>
+                    <ion-card-subtitle style="text-align: center;">({{p.description}})</ion-card-subtitle>
+                    <ion-card-subtitle>Harga: RM{{p.price}}</ion-card-subtitle>
+                    <ion-button expand="block" fill="outline" color="dark" (click)="addToCart(p)">
+                      <ion-icon name="cart" slot="icon-only" color="tertiary"></ion-icon>
+                    </ion-button>
+                </ion-card-header>
+            </ion-card>
+        </div>
+      </ion-col>
+
+         <ion-col size ="6">
+        <div *ngFor="let p of products | async">
+            <ion-card color="light" *ngIf="p.id == 12">
+                <ion-card-header>
+                    <img src="assets/icon/ikan-merah.jpg" class="image"> <!--image path sets different product image for each product id-->
+                    <ion-card-title style="text-align: center;">{{p.name}}</ion-card-title>
+                    <ion-card-subtitle style="text-align: center;">({{p.description}})</ion-card-subtitle>
+                    <ion-card-subtitle>Harga: RM{{p.price}}</ion-card-subtitle>
+                    <ion-button expand="block" fill="outline" color="dark" (click)="addToCart(p)">
+                      <ion-icon name="cart" slot="icon-only" color="tertiary"></ion-icon>
+                    </ion-button>
+                </ion-card-header>
+            </ion-card>
+        </div>
+      </ion-col> 
+       </ion-row>
+
+       <ion-row>
+        <ion-col size ="6">
+      <div *ngFor="let p of products | async">
+          <ion-card color="light" *ngIf="p.id == 33">
+              <ion-card-header>
+                  <img src="assets/icon/ikan-siakap.jpg" class="image"> <!--image path sets different product image for each product id-->
+                  <ion-card-title style="text-align: center;">{{p.name}}</ion-card-title>
+                  <ion-card-subtitle style="text-align: center;">({{p.description}})</ion-card-subtitle>
+                  <ion-card-subtitle>Harga: RM{{p.price}}</ion-card-subtitle>
+                  <ion-button expand="block" fill="outline" color="dark" (click)="addToCart(p)">
+                    <ion-icon name="cart" slot="icon-only" color="tertiary"></ion-icon>
+                  </ion-button>
+              </ion-card-header>
+          </ion-card>
+      </div>
+    </ion-col>
+
+       <ion-col size ="6">
+      <div *ngFor="let p of products | async">
+          <ion-card color="light" *ngIf="p.id == 34">
+              <ion-card-header>
+                  <img src="assets/icon/ikan-sardin.jpg" class="image"> <!--image path sets different product image for each product id-->
+                  <ion-card-title style="text-align: center;">{{p.name}}</ion-card-title>
+                  <ion-card-subtitle style="text-align: center;">({{p.description}})</ion-card-subtitle>
+                  <ion-card-subtitle>Harga: RM{{p.price}}</ion-card-subtitle>
+                  <ion-button expand="block" fill="outline" color="dark" (click)="addToCart(p)">
+                    <ion-icon name="cart" slot="icon-only" color="tertiary"></ion-icon>
+                  </ion-button>
+              </ion-card-header>
+          </ion-card>
+      </div>
+    </ion-col> 
+     </ion-row>
+
+       <ion-row>
+        <ion-col size ="6">
+      <div *ngFor="let p of products | async">
+          <ion-card color="light" *ngIf="p.id == 29">
+              <ion-card-header>
+                  <img src="assets/icon/ikan-selar.jpg" class="image"> <!--image path sets different product image for each product id-->
+                  <ion-card-title style="text-align: center;">{{p.name}}</ion-card-title>
+                  <ion-card-subtitle style="text-align: center;">({{p.description}})</ion-card-subtitle>
+                  <ion-card-subtitle>Harga: RM{{p.price}}</ion-card-subtitle>
+                  <ion-button expand="block" fill="outline" color="dark" (click)="addToCart(p)">
+                    <ion-icon name="cart" slot="icon-only" color="tertiary"></ion-icon>
+                  </ion-button>
+              </ion-card-header>
+          </ion-card>
+      </div>
+    </ion-col>
+
+       <ion-col size ="6">
+      <div *ngFor="let p of products | async">
+          <ion-card color="light" *ngIf="p.id == 30">
+              <ion-card-header>
+                  <img src="assets/icon/ikan-cencaru.jpg" class="image"> <!--image path sets different product image for each product id-->
+                  <ion-card-title style="text-align: center;">{{p.name}}</ion-card-title>
+                  <ion-card-subtitle style="text-align: center;">({{p.description}})</ion-card-subtitle>
+                  <ion-card-subtitle>Harga: RM{{p.price}}</ion-card-subtitle>
+                  <ion-button expand="block" fill="outline" color="dark" (click)="addToCart(p)">
+                    <ion-icon name="cart" slot="icon-only" color="tertiary"></ion-icon>
+                  </ion-button>
+              </ion-card-header>
+          </ion-card>
+      </div>
+    </ion-col> 
+     </ion-row>
+
+     <ion-row>
+      <ion-col size ="6">
+    <div *ngFor="let p of products | async">
+        <ion-card color="light" *ngIf="p.id == 38">
+            <ion-card-header>
+                <img src="assets/icon/ikan-keli.jpg" class="image"> <!--image path sets different product image for each product id-->
+                <ion-card-title style="text-align: center;">{{p.name}}</ion-card-title>
+                <ion-card-subtitle style="text-align: center;">({{p.description}})</ion-card-subtitle>
+                <ion-card-subtitle>Harga: RM{{p.price}}</ion-card-subtitle>
+                <ion-button expand="block" fill="outline" color="dark" (click)="addToCart(p)">
+                  <ion-icon name="cart" slot="icon-only" color="tertiary"></ion-icon>
+                </ion-button>
+            </ion-card-header>
+        </ion-card>
+    </div>
+  </ion-col>
+
+     <ion-col size ="6">
+    <div *ngFor="let p of products | async">
+        <ion-card color="light" *ngIf="p.id == 39">
+            <ion-card-header>
+                <img src="assets/icon/ikan-pelaling.jpg" class="image"> <!--image path sets different product image for each product id-->
+                <ion-card-title style="text-align: center;">{{p.name}}</ion-card-title>
+                <ion-card-subtitle style="text-align: center;">({{p.description}})</ion-card-subtitle>
+                <ion-card-subtitle>Harga: RM{{p.price}}</ion-card-subtitle>
+                <ion-button expand="block" fill="outline" color="dark" (click)="addToCart(p)">
+                  <ion-icon name="cart" slot="icon-only" color="tertiary"></ion-icon>
+                </ion-button>
+            </ion-card-header>
+        </ion-card>
+    </div>
+  </ion-col> 
+   </ion-row>
+
+   <ion-row>
+    <ion-col size ="6">
+  <div *ngFor="let p of products | async">
+      <ion-card color="light" *ngIf="p.id == 40">
           <ion-card-header>
-              <img src="assets/icon/ayam.jpg" class="image"> <!--image path sets different product image for each product id-->
-              <ion-card-title>{{p.name}}</ion-card-title>
-              <ion-card-subtitle>Description:{{p.description}}</ion-card-subtitle>
-              <ion-card-subtitle>Price: RM{{p.price}}</ion-card-subtitle>
-              <ion-button expand="block" fill="outline" shape="round" color="dark" (click)="addToCart(p)">
-                  Add to Cart
+              <img src="assets/icon/ikan-gelama.jpg" class="image"> <!--image path sets different product image for each product id-->
+              <ion-card-title style="text-align: center;">{{p.name}}</ion-card-title>
+              <ion-card-subtitle style="text-align: center;">({{p.description}})</ion-card-subtitle>
+              <ion-card-subtitle>Harga: RM{{p.price}}</ion-card-subtitle>
+              <ion-button expand="block" fill="outline" color="dark" (click)="addToCart(p)">
+                <ion-icon name="cart" slot="icon-only" color="tertiary"></ion-icon>
               </ion-button>
           </ion-card-header>
       </ion-card>
   </div>
-  
-  <div class="horizontal-cards" *ngFor="let p of products | async">
-      <ion-card color="light" *ngIf="p.id == 5">
+</ion-col>
+
+   <ion-col size ="6">
+  <div *ngFor="let p of products | async">
+      <ion-card color="light" *ngIf="p.id == 41">
           <ion-card-header>
-              <img src="assets/icon/ayam.jpg" class="image"> <!--image path sets different product image for each product id-->
-              <ion-card-title>{{p.name}}</ion-card-title>
-              <ion-card-subtitle>Description:{{p.description}}</ion-card-subtitle>
-              <ion-card-subtitle>Price: RM{{p.price}}</ion-card-subtitle>
-              <ion-button expand="block" fill="outline" shape="round" color="dark" (click)="addToCart(p)">
-                  Add to Cart
+              <img src="assets/icon/ikan-patin.jpg" class="image"> <!--image path sets different product image for each product id-->
+              <ion-card-title style="text-align: center;">{{p.name}}</ion-card-title>
+              <ion-card-subtitle style="text-align: center;">({{p.description}})</ion-card-subtitle>
+              <ion-card-subtitle>Harga: RM{{p.price}}</ion-card-subtitle>
+              <ion-button expand="block" fill="outline" color="dark" (click)="addToCart(p)">
+                <ion-icon name="cart" slot="icon-only" color="tertiary"></ion-icon>
               </ion-button>
           </ion-card-header>
       </ion-card>
   </div>
+</ion-col> 
+ </ion-row>
+
+ <ion-row>
+  <ion-col size ="6">
+<div *ngFor="let p of products | async">
+    <ion-card color="light" *ngIf="p.id == 42">
+        <ion-card-header>
+            <img src="assets/icon/ikan-jenahak.jpg" class="image"> <!--image path sets different product image for each product id-->
+            <ion-card-title style="text-align: center;">{{p.name}}</ion-card-title>
+            <ion-card-subtitle style="text-align: center;">({{p.description}})</ion-card-subtitle>
+            <ion-card-subtitle>Harga: RM{{p.price}}</ion-card-subtitle>
+            <ion-button expand="block" fill="outline" color="dark" (click)="addToCart(p)">
+              <ion-icon name="cart" slot="icon-only" color="tertiary"></ion-icon>
+            </ion-button>
+        </ion-card-header>
+    </ion-card>
+</div>
+</ion-col>
+
+ <ion-col size ="6">
+<div *ngFor="let p of products | async">
+    <ion-card color="light" *ngIf="p.id == 43">
+        <ion-card-header>
+            <img src="assets/icon/bawal-emas.jpg" class="image"> <!--image path sets different product image for each product id-->
+            <ion-card-title style="text-align: center;">{{p.name}}</ion-card-title>
+            <ion-card-subtitle style="text-align: center;">({{p.description}})</ion-card-subtitle>
+            <ion-card-subtitle>Harga: RM{{p.price}}</ion-card-subtitle>
+            <ion-button expand="block" fill="outline" color="dark" (click)="addToCart(p)">
+              <ion-icon name="cart" slot="icon-only" color="tertiary"></ion-icon>
+            </ion-button>
+        </ion-card-header>
+    </ion-card>
+</div>
+</ion-col> 
+</ion-row>
+
+<ion-row>
+  <ion-col size ="6">
+<div *ngFor="let p of products | async">
+    <ion-card color="light" *ngIf="p.id == 44">
+        <ion-card-header>
+            <img src="assets/icon/ikan-senangin.jpg" class="image"> <!--image path sets different product image for each product id-->
+            <ion-card-title style="text-align: center;">{{p.name}}</ion-card-title>
+            <ion-card-subtitle style="text-align: center;">({{p.description}})</ion-card-subtitle>
+            <ion-card-subtitle>Harga: RM{{p.price}}</ion-card-subtitle>
+            <ion-button expand="block" fill="outline" color="dark" (click)="addToCart(p)">
+              <ion-icon name="cart" slot="icon-only" color="tertiary"></ion-icon>
+            </ion-button>
+        </ion-card-header>
+    </ion-card>
+</div>
+</ion-col>
+
+ <ion-col size ="6">
+<div *ngFor="let p of products | async">
+    <ion-card color="light" *ngIf="p.id == 45">
+        <ion-card-header>
+            <img src="assets/icon/ikan-pari.jpg" class="image"> <!--image path sets different product image for each product id-->
+            <ion-card-title style="text-align: center;">{{p.name}}</ion-card-title>
+            <ion-card-subtitle style="text-align: center;">({{p.description}})</ion-card-subtitle>
+            <ion-card-subtitle>Harga: RM{{p.price}}</ion-card-subtitle>
+            <ion-button expand="block" fill="outline" color="dark" (click)="addToCart(p)">
+              <ion-icon name="cart" slot="icon-only" color="tertiary"></ion-icon>
+            </ion-button>
+        </ion-card-header>
+    </ion-card>
+</div>
+</ion-col> 
+</ion-row>
+
+<ion-row>
+  <ion-col size ="6">
+<div *ngFor="let p of products | async">
+    <ion-card color="light" *ngIf="p.id == 46">
+        <ion-card-header>
+            <img src="assets/icon/ikan-kerapu.jpg" class="image"> <!--image path sets different product image for each product id-->
+            <ion-card-title style="text-align: center;">{{p.name}}</ion-card-title>
+            <ion-card-subtitle style="text-align: center;">({{p.description}})</ion-card-subtitle>
+            <ion-card-subtitle>Harga: RM{{p.price}}</ion-card-subtitle>
+            <ion-button expand="block" fill="outline" color="dark" (click)="addToCart(p)">
+              <ion-icon name="cart" slot="icon-only" color="tertiary"></ion-icon>
+            </ion-button>
+        </ion-card-header>
+    </ion-card>
+</div>
+</ion-col>
+
+ <ion-col size ="6">
+<div *ngFor="let p of products | async">
+    <ion-card color="light" *ngIf="p.id == 47">
+        <ion-card-header>
+            <img src="assets/icon/ikan-parang.jpg" class="image"> <!--image path sets different product image for each product id-->
+            <ion-card-title style="text-align: center;">{{p.name}}</ion-card-title>
+            <ion-card-subtitle style="text-align: center;">({{p.description}})</ion-card-subtitle>
+            <ion-card-subtitle>Harga: RM{{p.price}}</ion-card-subtitle>
+            <ion-button expand="block" fill="outline" color="dark" (click)="addToCart(p)">
+              <ion-icon name="cart" slot="icon-only" color="tertiary"></ion-icon>
+            </ion-button>
+        </ion-card-header>
+    </ion-card>
+</div>
+</ion-col> 
+</ion-row>
+
+<ion-row>
+  <ion-col size ="6">
+<div *ngFor="let p of products | async">
+    <ion-card color="light" *ngIf="p.id == 48">
+        <ion-card-header>
+            <img src="assets/icon/talapiaM.jpg" class="image"> <!--image path sets different product image for each product id-->
+            <ion-card-title style="text-align: center;">{{p.name}}</ion-card-title>
+            <ion-card-subtitle style="text-align: center;">({{p.description}})</ion-card-subtitle>
+            <ion-card-subtitle>Harga: RM{{p.price}}</ion-card-subtitle>
+            <ion-button expand="block" fill="outline" color="dark" (click)="addToCart(p)">
+              <ion-icon name="cart" slot="icon-only" color="tertiary"></ion-icon>
+            </ion-button>
+        </ion-card-header>
+    </ion-card>
+</div>
+</ion-col>
+
+ <ion-col size ="6">
+<div *ngFor="let p of products | async">
+    <ion-card color="light" *ngIf="p.id == 49">
+        <ion-card-header>
+            <img src="assets/icon/talapiaH.jpg" class="image"> <!--image path sets different product image for each product id-->
+            <ion-card-title style="text-align: center;">{{p.name}}</ion-card-title>
+            <ion-card-subtitle style="text-align: center;">({{p.description}})</ion-card-subtitle>
+            <ion-card-subtitle>Harga: RM{{p.price}}</ion-card-subtitle>
+            <ion-button expand="block" fill="outline" color="dark" (click)="addToCart(p)">
+              <ion-icon name="cart" slot="icon-only" color="tertiary"></ion-icon>
+            </ion-button>
+        </ion-card-header>
+    </ion-card>
+</div>
+</ion-col> 
+</ion-row>
+
+<ion-row>
+  <ion-col size ="6">
+<div *ngFor="let p of products | async">
+    <ion-card color="light" *ngIf="p.id == 50">
+        <ion-card-header>
+            <img src="assets/icon/tenggiri.jpg" class="image"> <!--image path sets different product image for each product id-->
+            <ion-card-title style="text-align: center;">{{p.name}}</ion-card-title>
+            <ion-card-subtitle style="text-align: center;">({{p.description}})</ion-card-subtitle>
+            <ion-card-subtitle>Harga: RM{{p.price}}</ion-card-subtitle>
+            <ion-button expand="block" fill="outline" color="dark" (click)="addToCart(p)">
+              <ion-icon name="cart" slot="icon-only" color="tertiary"></ion-icon>
+            </ion-button>
+        </ion-card-header>
+    </ion-card>
+</div>
+</ion-col>
+
+ <ion-col size ="6">
+<div *ngFor="let p of products | async">
+    <ion-card color="light" *ngIf="p.id == 51">
+        <ion-card-header>
+            <img src="assets/icon/talapiaF.jpg" class="image"> <!--image path sets different product image for each product id-->
+            <ion-card-title style="text-align: center;">{{p.name}}</ion-card-title>
+            <ion-card-subtitle style="text-align: center;">({{p.description}})</ion-card-subtitle>
+            <ion-card-subtitle>Harga: RM{{p.price}}</ion-card-subtitle>
+            <ion-button expand="block" fill="outline" color="dark" (click)="addToCart(p)">
+              <ion-icon name="cart" slot="icon-only" color="tertiary"></ion-icon>
+            </ion-button>
+        </ion-card-header>
+    </ion-card>
+</div>
+</ion-col> 
+</ion-row>
+
+<ion-row>
+  <ion-col size ="6">
+<div *ngFor="let p of products | async">
+    <ion-card color="light" *ngIf="p.id == 52">
+        <ion-card-header>
+            <img src="assets/icon/merahS.jpg" class="image"> <!--image path sets different product image for each product id-->
+            <ion-card-title style="text-align: center;">{{p.name}}</ion-card-title>
+            <ion-card-subtitle style="text-align: center;">({{p.description}})</ion-card-subtitle>
+            <ion-card-subtitle>Harga: RM{{p.price}}</ion-card-subtitle>
+            <ion-button expand="block" fill="outline" color="dark" (click)="addToCart(p)">
+              <ion-icon name="cart" slot="icon-only" color="tertiary"></ion-icon>
+            </ion-button>
+        </ion-card-header>
+    </ion-card>
+</div>
+</ion-col>
+
+ <ion-col size ="6">
+<div *ngFor="let p of products | async">
+    <ion-card color="light" *ngIf="p.id == 53">
+        <ion-card-header>
+            <img src="assets/icon/selarB.jpg" class="image"> <!--image path sets different product image for each product id-->
+            <ion-card-title style="text-align: center;">{{p.name}}</ion-card-title>
+            <ion-card-subtitle style="text-align: center;">({{p.description}})</ion-card-subtitle>
+            <ion-card-subtitle>Harga: RM{{p.price}}</ion-card-subtitle>
+            <ion-button expand="block" fill="outline" color="dark" (click)="addToCart(p)">
+              <ion-icon name="cart" slot="icon-only" color="tertiary"></ion-icon>
+            </ion-button>
+        </ion-card-header>
+    </ion-card>
+</div>
+</ion-col> 
+</ion-row>
+          </div>
+        
+          <div *ngIf="selectTabs == '3'">
+
+            <ion-row>
+              <ion-col size ="6">
+            <div *ngFor="let p of products | async">
+                <ion-card color="light" *ngIf="p.id == 13">
+                    <ion-card-header>
+                        <img src="assets/icon/udang-galah.jpg" class="image"> <!--image path sets different product image for each product id-->
+                        <ion-card-title style="text-align: center;">{{p.name}}</ion-card-title>
+                        <ion-card-subtitle style="text-align: center;">({{p.description}})</ion-card-subtitle>
+                        <ion-card-subtitle>Harga: RM{{p.price}}</ion-card-subtitle>
+                        <ion-button expand="block" fill="outline" color="dark" (click)="addToCart(p)">
+                          <ion-icon name="cart" slot="icon-only" color="tertiary"></ion-icon>
+                        </ion-button>
+                    </ion-card-header>
+                </ion-card>
+            </div>
+          </ion-col>
+          
+          <ion-col size ="6">
+          <div *ngFor="let p of products | async">
+              <ion-card color="light" *ngIf="p.id == 15">
+                  <ion-card-header>
+                      <img src="assets/icon/udang-galah.jpg" class="image"> <!--image path sets different product image for each product id-->
+                      <ion-card-title style="text-align: center;">{{p.name}}</ion-card-title>
+                      <ion-card-subtitle style="text-align: center;">({{p.description}})</ion-card-subtitle>
+                      <ion-card-subtitle>Harga: RM{{p.price}}</ion-card-subtitle>
+                      <ion-button expand="block" fill="outline" color="dark" (click)="addToCart(p)">
+                        <ion-icon name="cart" slot="icon-only" color="tertiary"></ion-icon>
+                      </ion-button>
+                  </ion-card-header>
+              </ion-card>
+          </div>
+        </ion-col>
+           </ion-row> 
+      
+           <ion-row>
+
+           <ion-col size ="6">
+            <div *ngFor="let p of products | async">
+                <ion-card color="light" *ngIf="p.id == 14">
+                    <ion-card-header>
+                        <img src="assets/icon/udang-besar.jpg" class="image"> <!--image path sets different product image for each product id-->
+                        <ion-card-title style="text-align: center;">{{p.name}}</ion-card-title>
+                        <ion-card-subtitle style="text-align: center;">({{p.description}})</ion-card-subtitle>
+                        <ion-card-subtitle>Harga: RM{{p.price}}</ion-card-subtitle>
+                        <ion-button expand="block" fill="outline" color="dark" (click)="addToCart(p)">
+                          <ion-icon name="cart" slot="icon-only" color="tertiary"></ion-icon>
+                        </ion-button>
+                    </ion-card-header>
+                </ion-card>
+            </div>
+          </ion-col> 
+           
+           <ion-col size ="6">
+            <div *ngFor="let p of products | async">
+                <ion-card color="light" *ngIf="p.id == 36">
+                    <ion-card-header>
+                        <img src="assets/icon/udangS.jpg" class="image"> <!--image path sets different product image for each product id-->
+                        <ion-card-title style="text-align: center;">{{p.name}}</ion-card-title>
+                        <ion-card-subtitle style="text-align: center;">({{p.description}})</ion-card-subtitle>
+                        <ion-card-subtitle>Harga: RM{{p.price}}</ion-card-subtitle>
+                        <ion-button expand="block" fill="outline" color="dark" (click)="addToCart(p)">
+                          <ion-icon name="cart" slot="icon-only" color="tertiary"></ion-icon>
+                        </ion-button>
+                    </ion-card-header>
+                </ion-card>
+            </div>
+          </ion-col>
+        </ion-row>
+          
+        <ion-row>
+            <ion-col size ="6">
+              <div *ngFor="let p of products | async">
+                <ion-card color="light" *ngIf="p.id == 35">
+                  <ion-card-header>
+                      <img src="assets/icon/udangM.jpg" class="image"> <!--image path sets different product image for each product id-->
+                      <ion-card-title style="text-align: center;">{{p.name}}</ion-card-title>
+                      <ion-card-subtitle style="text-align: center;">({{p.description}})</ion-card-subtitle>
+                      <ion-card-subtitle>Harga: RM{{p.price}}</ion-card-subtitle>
+                      <ion-button expand="block" fill="outline" color="dark" (click)="addToCart(p)">
+                        <ion-icon name="cart" slot="icon-only" color="tertiary"></ion-icon>
+                      </ion-button>
+                  </ion-card-header>
+              </ion-card>
+              </div>
+            </ion-col>
   
-  </ion-content>
-  
+              <ion-col size ="6">
+            <div *ngFor="let p of products | async">
+                <ion-card color="light" *ngIf="p.id == 37">
+                    <ion-card-header>
+                        <img src="assets/icon/udangXL.jpg" class="image"> <!--image path sets different product image for each product id-->
+                        <ion-card-title style="text-align: center;">{{p.name}}</ion-card-title>
+                        <ion-card-subtitle style="text-align: center;">({{p.description}})</ion-card-subtitle>
+                        <ion-card-subtitle>Harga: RM{{p.price}}</ion-card-subtitle>
+                        <ion-button expand="block" fill="outline" color="dark" (click)="addToCart(p)">
+                          <ion-icon name="cart" slot="icon-only" color="tertiary"></ion-icon>
+                        </ion-button>
+                    </ion-card-header>
+                </ion-card>
+            </div>
+          </ion-col>
+            </ion-row>
+
+            <ion-row>
+            <ion-col size ="6">
+              <div *ngFor="let p of products | async">
+                  <ion-card color="light" *ngIf="p.id == 23">
+                      <ion-card-header>
+                          <img src="assets/icon/sotongA.jpg" class="image"> <!--image path sets different product image for each product id-->
+                          <ion-card-title style="text-align: center;">{{p.name}}</ion-card-title>
+                          <ion-card-subtitle style="text-align: center;">({{p.description}})</ion-card-subtitle>
+                          <ion-card-subtitle>Harga: RM{{p.price}}</ion-card-subtitle>
+                          <ion-button expand="block" fill="outline" color="dark" (click)="addToCart(p)">
+                            <ion-icon name="cart" slot="icon-only" color="tertiary"></ion-icon>
+                          </ion-button>
+                      </ion-card-header>
+                  </ion-card>
+              </div>
+            </ion-col> 
+
+              <ion-col size ="6">
+            <div *ngFor="let p of products | async">
+                <ion-card color="light" *ngIf="p.id == 24">
+                    <ion-card-header>
+                        <img src="assets/icon/sotongC.jpg" class="image"> <!--image path sets different product image for each product id-->
+                        <ion-card-title style="text-align: center;">{{p.name}}</ion-card-title>
+                        <ion-card-subtitle style="text-align: center;">({{p.description}})</ion-card-subtitle>
+                        <ion-card-subtitle>Harga: RM{{p.price}}</ion-card-subtitle>
+                        <ion-button expand="block" fill="outline" color="dark" (click)="addToCart(p)">
+                          <ion-icon name="cart" slot="icon-only" color="tertiary"></ion-icon>
+                        </ion-button>
+                    </ion-card-header>
+                </ion-card>
+            </div>
+          </ion-col>
+            </ion-row>
+          
+          <ion-row>
+             <ion-col size ="6">
+            <div *ngFor="let p of products | async">
+                <ion-card color="light" *ngIf="p.id == 25">
+                    <ion-card-header>
+                        <img src="assets/icon/sotongB.jpg" class="image"> <!--image path sets different product image for each product id-->
+                        <ion-card-title style="text-align: center;">{{p.name}}</ion-card-title>
+                        <ion-card-subtitle style="text-align: center;">({{p.description}})</ion-card-subtitle>
+                        <ion-card-subtitle>Harga: RM{{p.price}}</ion-card-subtitle>
+                        <ion-button expand="block" fill="outline" color="dark" (click)="addToCart(p)">
+                          <ion-icon name="cart" slot="icon-only" color="tertiary"></ion-icon>
+                        </ion-button>
+                    </ion-card-header>
+                </ion-card>
+            </div>
+          </ion-col>
+           
+            <ion-col size ="6">
+          <div *ngFor="let p of products | async">
+              <ion-card color="light" *ngIf="p.id == 54">
+                  <ion-card-header>
+                      <img src="assets/icon/sotongD.jpg" class="image"> <!--image path sets different product image for each product id-->
+                      <ion-card-title style="text-align: center;">{{p.name}}</ion-card-title>
+                      <ion-card-subtitle style="text-align: center;">({{p.description}})</ion-card-subtitle>
+                      <ion-card-subtitle>Harga: RM{{p.price}}</ion-card-subtitle>
+                      <ion-button expand="block" fill="outline" color="dark" (click)="addToCart(p)">
+                        <ion-icon name="cart" slot="icon-only" color="tertiary"></ion-icon>
+                      </ion-button>
+                  </ion-card-header>
+              </ion-card>
+          </div>
+        </ion-col>
+     </ion-row>
+
+          <ion-row>
+           <ion-col size ="6">
+          <div *ngFor="let p of products | async">
+              <ion-card color="light" *ngIf="p.id == 55">
+                  <ion-card-header>
+                      <img src="assets/icon/sotongE.jpg" class="image"> <!--image path sets different product image for each product id-->
+                      <ion-card-title style="text-align: center;">{{p.name}}</ion-card-title>
+                      <ion-card-subtitle style="text-align: center;">({{p.description}})</ion-card-subtitle>
+                      <ion-card-subtitle>Harga: RM{{p.price}}</ion-card-subtitle>
+                      <ion-button expand="block" fill="outline" color="dark" (click)="addToCart(p)">
+                        <ion-icon name="cart" slot="icon-only" color="tertiary"></ion-icon>
+                      </ion-button>
+                  </ion-card-header>
+              </ion-card>
+          </div>
+        </ion-col>
+
+        <ion-col size ="6">
+          <div *ngFor="let p of products | async">
+              <ion-card color="light" *ngIf="p.id == 56">
+                  <ion-card-header>
+                      <img src="assets/icon/ketamB.jpg" class="image"> <!--image path sets different product image for each product id-->
+                      <ion-card-title style="text-align: center;">{{p.name}}</ion-card-title>
+                      <ion-card-subtitle style="text-align: center;">({{p.description}})</ion-card-subtitle>
+                      <ion-card-subtitle>Harga: RM{{p.price}}</ion-card-subtitle>
+                      <ion-button expand="block" fill="outline" color="dark" (click)="addToCart(p)">
+                        <ion-icon name="cart" slot="icon-only" color="tertiary"></ion-icon>
+                      </ion-button>
+                  </ion-card-header>
+              </ion-card>
+          </div>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col size ="6">
+      <div *ngFor="let p of products | async">
+          <ion-card color="light" *ngIf="p.id == 57">
+              <ion-card-header>
+                  <img src="assets/icon/ketamM.jpg" class="image"> <!--image path sets different product image for each product id-->
+                  <ion-card-title style="text-align: center;">{{p.name}}</ion-card-title>
+                  <ion-card-subtitle style="text-align: center;">({{p.description}})</ion-card-subtitle>
+                  <ion-card-subtitle>Harga: RM{{p.price}}</ion-card-subtitle>
+                  <ion-button expand="block" fill="outline" color="dark" (click)="addToCart(p)">
+                    <ion-icon name="cart" slot="icon-only" color="tertiary"></ion-icon>
+                  </ion-button>
+              </ion-card-header>
+          </ion-card>
+      </div>
+    </ion-col>
+
+       <ion-col size ="6">
+      <div *ngFor="let p of products | async">
+          <ion-card color="light" *ngIf="p.id == 58">
+              <ion-card-header>
+                  <img src="assets/icon/Lala.jpg" class="image"> <!--image path sets different product image for each product id-->
+                  <ion-card-title style="text-align: center;">{{p.name}}</ion-card-title>
+                  <ion-card-subtitle style="text-align: center;">({{p.description}})</ion-card-subtitle>
+                  <ion-card-subtitle>Harga: RM{{p.price}}</ion-card-subtitle>
+                  <ion-button expand="block" fill="outline" color="dark" (click)="addToCart(p)">
+                    <ion-icon name="cart" slot="icon-only" color="tertiary"></ion-icon>
+                  </ion-button>
+              </ion-card-header>
+          </ion-card>
+      </div>
+    </ion-col> 
+     </ion-row>
+
+     <ion-row>
+      <ion-col size ="6">
+        <div *ngFor="let p of products | async">
+            <ion-card color="light" *ngIf="p.id == 59">
+                <ion-card-header>
+                    <img src="assets/icon/siput-sedut.jpg" class="image"> <!--image path sets different product image for each product id-->
+                    <ion-card-title style="text-align: center;">{{p.name}}</ion-card-title>
+                    <ion-card-subtitle style="text-align: center;">({{p.description}})</ion-card-subtitle>
+                    <ion-card-subtitle>Harga: RM{{p.price}}</ion-card-subtitle>
+                    <ion-button expand="block" fill="outline" color="dark" (click)="addToCart(p)">
+                      <ion-icon name="cart" slot="icon-only" color="tertiary"></ion-icon>
+                    </ion-button>
+                </ion-card-header>
+            </ion-card>
+        </div>
+      </ion-col> 
+
+        <ion-col size ="6">
+      <div *ngFor="let p of products | async">
+          <ion-card color="light" *ngIf="p.id == 60">
+              <ion-card-header>
+                  <img src="assets/icon/kupang.jpg" class="image"> <!--image path sets different product image for each product id-->
+                  <ion-card-title style="text-align: center;">{{p.name}}</ion-card-title>
+                  <ion-card-subtitle style="text-align: center;">({{p.description}})</ion-card-subtitle>
+                  <ion-card-subtitle>Harga: RM{{p.price}}</ion-card-subtitle>
+                  <ion-button expand="block" fill="outline" color="dark" (click)="addToCart(p)">
+                    <ion-icon name="cart" slot="icon-only" color="tertiary"></ion-icon>
+                  </ion-button>
+              </ion-card-header>
+          </ion-card>
+      </div>
+    </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col size ="6">
+          <div *ngFor="let p of products | async">
+              <ion-card color="light" *ngIf="p.id == 61">
+                  <ion-card-header>
+                      <img src="assets/icon/kerang.jpg" class="image"> <!--image path sets different product image for each product id-->
+                      <ion-card-title style="text-align: center;">{{p.name}}</ion-card-title>
+                      <ion-card-subtitle style="text-align: center;">({{p.description}})</ion-card-subtitle>
+                      <ion-card-subtitle>Harga: RM{{p.price}}</ion-card-subtitle>
+                      <ion-button expand="block" fill="outline" color="dark" (click)="addToCart(p)">
+                        <ion-icon name="cart" slot="icon-only" color="tertiary"></ion-icon>
+                      </ion-button>
+                  </ion-card-header>
+              </ion-card>
+          </div>
+        </ion-col> 
+        </ion-row>
+        
+          </div>
+
+          <div *ngIf="selectTabs == '4'">
+
+            <ion-row>
+              <ion-col size ="6">
+                <div *ngFor="let p of products | async">
+                    <ion-card color="light" *ngIf="p.id == 62">
+                        <ion-card-header>
+                            <img src="assets/icon/pohc.jpg" class="image"> <!--image path sets different product image for each product id-->
+                            <ion-card-title style="text-align: center;">{{p.name}}</ion-card-title>
+                            <ion-card-subtitle style="text-align: center;">({{p.description}})</ion-card-subtitle>
+                            <ion-card-subtitle>Harga: RM{{p.price}}</ion-card-subtitle>
+                            <ion-button expand="block" fill="outline" color="dark" (click)="addToCart(p)">
+                              <ion-icon name="cart" slot="icon-only" color="tertiary"></ion-icon>
+                            </ion-button>
+                        </ion-card-header>
+                    </ion-card>
+                </div>
+              </ion-col> 
+        
+                <ion-col size ="6">
+              <div *ngFor="let p of products | async">
+                  <ion-card color="light" *ngIf="p.id == 63">
+                      <ion-card-header>
+                          <img src="assets/icon/sayurM.jpg" class="image"> <!--image path sets different product image for each product id-->
+                          <ion-card-title style="text-align: center;">{{p.name}}</ion-card-title>
+                          <ion-card-subtitle style="text-align: center;">({{p.description}})</ion-card-subtitle>
+                          <ion-card-subtitle>Harga: RM{{p.price}}</ion-card-subtitle>
+                          <ion-button expand="block" fill="outline" color="dark" (click)="addToCart(p)">
+                            <ion-icon name="cart" slot="icon-only" color="tertiary"></ion-icon>
+                          </ion-button>
+                      </ion-card-header>
+                  </ion-card>
+              </div>
+            </ion-col>
+              </ion-row>
+
+              <ion-row>
+                <ion-col size ="6">
+                  <div *ngFor="let p of products | async">
+                      <ion-card color="light" *ngIf="p.id == 64">
+                          <ion-card-header>
+                              <img src="assets/icon/kubisBM.jpg" class="image"> <!--image path sets different product image for each product id-->
+                              <ion-card-title style="text-align: center;">{{p.name}}</ion-card-title>
+                              <ion-card-subtitle style="text-align: center;">({{p.description}})</ion-card-subtitle>
+                              <ion-card-subtitle>Harga: RM{{p.price}}</ion-card-subtitle>
+                              <ion-button expand="block" fill="outline" color="dark" (click)="addToCart(p)">
+                                <ion-icon name="cart" slot="icon-only" color="tertiary"></ion-icon>
+                              </ion-button>
+                          </ion-card-header>
+                      </ion-card>
+                  </div>
+                </ion-col> 
+          
+                  <ion-col size ="6">
+                <div *ngFor="let p of products | async">
+                    <ion-card color="light" *ngIf="p.id == 65">
+                        <ion-card-header>
+                            <img src="assets/icon/sawiJ.jpg" class="image"> <!--image path sets different product image for each product id-->
+                            <ion-card-title style="text-align: center;">{{p.name}}</ion-card-title>
+                            <ion-card-subtitle style="text-align: center;">({{p.description}})</ion-card-subtitle>
+                            <ion-card-subtitle>Harga: RM{{p.price}}</ion-card-subtitle>
+                            <ion-button expand="block" fill="outline" color="dark" (click)="addToCart(p)">
+                              <ion-icon name="cart" slot="icon-only" color="tertiary"></ion-icon>
+                            </ion-button>
+                        </ion-card-header>
+                    </ion-card>
+                </div>
+              </ion-col>
+                </ion-row>
+        
+          </div>
+65
+        </ion-content>

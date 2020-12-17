@@ -11,42 +11,37 @@
 
 <ion-content>
   <div class="ion-text-end">
-    <ion-button (click)="close()" fill="clear" color="danger"> <!--Close method initialised on click-->
-      <ion-icon name="close" slot="start"></ion-icon> <!--Close icon-->
+    <ion-button (click)="close()" fill="clear" color="danger"> 
+      <ion-icon name="close" slot="start"></ion-icon> 
     </ion-button>
   </div>
 
 <div class="ion-padding">
 
     <ion-list>
-      <ion-item *ngFor="let p of cart" class="ion-text-wrap"> <!--ngFor directive subscribes to products in cart-->
+      <ion-item *ngFor="let p of cart" class="ion-text-wrap">
         <ion-grid>
-          <ion-row class="ion-align-items-center"> <!--centers row-->
-            <ion-col size="2" class="ion-align-self-center">
-                <ion-button *ngIf="cart.length > 0" fill="clear" (click)="remove(p)"> <!--ngIf directive remove icon only displayed if cart total greater than 1. remove method initialised on click -->
-                    <ion-icon name="remove"></ion-icon> <!--remove icon. User can remove 1 product to cart at a time-->
+          <ion-row class="ion-allign-items-center">
+            <ion-col size="2" class="ion-allign-self-center">
+                <ion-button *ngIf="cart.length > 0" fill="clear" (click)="remove(p)">
+                    <ion-icon name="remove"></ion-icon> 
                 </ion-button>
             </ion-col>
-            <ion-col size="1" class="ion-align-self-center">
-              {{ p.amount }} <!--passes product amount to the cart modal from Firestore-->
+            <ion-col size="1" class="ion-allign-self-center">
+              {{ p.count }}
             </ion-col>
-            <ion-col size="2" class="ion-align-self-center">
-                <ion-button fill="clear" (click)="addToCart(p)"> <!--add to cart method initialised on click-->
-                    <ion-icon name="add"></ion-icon> <!--add icon. User can add 1 product to cart at a time-->
+            <ion-col size="2" class="ion-allign-self-center">
+                <ion-button fill="clear" (click)="addToCart(p)">
+                    <ion-icon name="add"></ion-icon>
                 </ion-button>
-            </ion-col>
-            <ion-col size="2" offset="5">
-              <ion-button *ngIf="cart.length > 0" fill="clear" (click)="empty(p); cartEmpty()"> <!--ngIf directive trash icon only displayed if cart total greater than 1. empty method and cart empty alert method initialised on click -->
-                <ion-icon name="trash"></ion-icon> <!--Trash icon-->
-            </ion-button>
             </ion-col>
           </ion-row>
           <ion-row>
             <ion-col size="9">
-              <b>{{ p.name }}</b> <!--passes product name to the cart modal from Firestore-->
+              <b>{{ p.name }} </b>
             </ion-col>
             <ion-col size="3" class="ion-text-end">
-              {{ p.amount * p.price | currency:'RM' }} <!--passes product amount multiplied by price. Uses £ currency pipe to the cart modal from Firestore-->
+              {{ p.count * p.price | currency:'RM' }}
             </ion-col>
           </ion-row>
         </ion-grid>
@@ -54,16 +49,7 @@
     </ion-list>
     <ion-list>
     <ion-item>
-      <ion-grid>
-        <ion-row>
-          <ion-col size="9">
-            Total: 
-          </ion-col>
-          <ion-col size="3" class="ion-text-end">
-            {{ getTotal() | currency:'RM' }} <!--getTotal method initialised to display cart total. Uses the RM currency pipe-->
-          </ion-col>
-        </ion-row>
-      </ion-grid>
+            Total: <span slot="end">{{ total | currency: 'RM':'symbol' }}</span>
     </ion-item>
   </ion-list>
 

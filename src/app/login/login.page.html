@@ -1,0 +1,40 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>My Grocery</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Log In</ion-card-title>
+    </ion-card-header>
+  
+    <ion-card-content>
+     <ion-item>  
+       <!-- Input with placeholder -->
+      <ion-input [(ngModel)]="user.email" placeholder="Email"></ion-input>
+      </ion-item>
+      <br>
+      <ion-item>  
+        <!-- Input with placeholder -->
+       <ion-input  [(ngModel)]="user.password" placeholder="Password" type= "password"></ion-input>
+       </ion-item>
+      <br> 
+      <ion-button expand= "block" color = "dark"(click)="login()">Login</ion-button>
+      <ion-col align-self-center>
+      <a [routerLink]="['/forgot-password']" class="small-text"color="secondary">Forgot Password?</a>
+      <span class="divider line one-line">or</span>
+
+      <span class="already">Dont't have an account?</span>
+      </ion-col>
+      <ion-button [routerLink]="['/register']" expand="block" color="danger">Create an account</ion-button>
+        <button ion-button (click) ="showfingerprintDialog">show fingerprintdialog </button>
+    </ion-card-content>
+  </ion-card>
+  
+  
+  
+
+</ion-content>

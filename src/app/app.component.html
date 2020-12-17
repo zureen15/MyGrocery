@@ -13,7 +13,7 @@
       <ion-list *ngFor= "let page of pages">
         <ion-menu-toggle auto-hide="true">
           <ion-item (click)="Goto(page)">
-            <ion-icon [name]= "page.icon" slot="start"></ion-icon>
+            <ion-icon [name]= "page.icon" slot="start" color="secondary"></ion-icon>
             <ion-label>{{page.pagename}}</ion-label>
           </ion-item>
         </ion-menu-toggle>

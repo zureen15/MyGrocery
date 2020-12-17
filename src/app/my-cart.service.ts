@@ -2,7 +2,6 @@ import { Identifiers } from '@angular/compiler';
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Observable } from 'rxjs'; //imports Observable
-import firebase from 'firebase/app';
 import 'firebase/firestore'
 
 
@@ -20,7 +19,6 @@ export class MyCartService {
     constructor(private firestore: AngularFirestore, ) //Firestore import declared in constructor class
     
     {
-
         this.products = this.firestore.collection<any>('products').valueChanges(); //valueChanges method returns latest values from products collection from within the Firestore database    }
     }
     getProducts() {
@@ -32,23 +30,23 @@ export class MyCartService {
         return this.cart;
     } //getCart method declared and returns products when initialised
 
-    addProduct(products) {
-        this.cart.push(products);
+    addProduct(product) {
+        this.cart.push(product);
     } //addProduct method adds product to cart when cart when initialised
 
-    removeItemFromCart(products) {
-        let index = this.cart.indexOf(products);
+    removeItemFromCart(product) {
+        let index = this.cart.indexOf(product);
 
         if (index > -1) {
             this.cart.splice(index, 1);
         }
     } //removeItemFromCart method removes 1 item from cart when initialised
 
-    emptyCart(products) {
-        let index = this.cart.indexOf(products);
+    emptyCart(product) {
+        let index = this.cart.indexOf(product);
 
         if (index > -1) {
-            this.cart.splice(products);
+            this.cart.splice(product);
         }
     } //emptyCart method removes all items from cart when initialsied
 

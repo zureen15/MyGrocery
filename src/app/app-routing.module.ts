@@ -1,8 +1,26 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
-import { HomePage } from './home/home.page';
+
 
 const routes: Routes = [
+  
+  {
+    path: '',
+    redirectTo: 'user-type',
+    pathMatch: 'full'
+  },
+  {
+    path: 'login',
+    loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
+  },
+  {
+    path: 'register',
+    loadChildren: () => import('./register/register.module').then( m => m.RegisterPageModule)
+  },
+  {
+    path: 'forgot-password',
+    loadChildren: () => import('./forgot-password/forgot-password.module').then( m => m.ForgotPasswordPageModule)
+  },
   {
     path: 'home',
     loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
@@ -44,6 +62,23 @@ const routes: Routes = [
     path: 'info',
     loadChildren: () => import('./pages/info/info.module').then( m => m.InfoPageModule)
   },
+  {
+    path: 'login-seller',
+    loadChildren: () => import('./login-seller/login-seller.module').then( m => m.LoginSellerPageModule)
+  },
+  {
+    path: 'register-seller',
+    loadChildren: () => import('./register-seller/register-seller.module').then( m => m.RegisterSellerPageModule)
+  },
+  {
+    path: 'home-seller',
+    loadChildren: () => import('./home-seller/home-seller.module').then( m => m.HomeSellerPageModule)
+  },
+  {
+    path: 'user-type',
+    loadChildren: () => import('./user-type/user-type.module').then( m => m.UserTypePageModule)
+  },
+
   
  
  

@@ -3,8 +3,7 @@
 // The list of file replacements can be found in `angular.json`.
 
 import { config } from 'rxjs';
-import firebase from 'firebase/app';
-import 'firebase/firestore';
+
 
 export const environment = {
   production: false,

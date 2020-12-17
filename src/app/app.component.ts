@@ -12,6 +12,7 @@ import {Router} from '@angular/router';
 export class AppComponent {
 
   home: any;
+  page: any;
   pages:any[]=[];
   constructor(
     private platform: Platform,

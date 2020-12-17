@@ -7,22 +7,22 @@ import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
+
+
 import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { AngularFireModule } from '@angular/fire';
+import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { environment } from '../environments/environment';
 import { MyCartPageModule } from './pages/my-cart/my-cart.module';
-import firebase from 'firebase/app';
-import 'firebase/firestore';
 
 
-firebase.initializeApp(environment.firebase);
 
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, AngularFireDatabaseModule,AngularFireModule.initializeApp(environment.firebase), 
-    AngularFirestoreModule, MyCartPageModule
+    AngularFireAuthModule, AngularFirestoreModule, MyCartPageModule
   ],
   providers: [
     StatusBar,

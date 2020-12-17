@@ -2,28 +2,43 @@ ion-toolbar {
   text-align: center;
 } // centers toolbar on screen
 
-.horizontal-cards {
-ion-card {
-  display: inline-block;
-  position: relative;
-  width: 250px;
-  }
+ion-badge {
+  color: #fff;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  border-radius: 100%;
 }
+ion-card {
+    display: inline-block;
+    height: 290px;
+    width: 100%;
+    margin: 10px auto;
+    box-shadow: 0 0 2px rgb(51, 48, 48);
 
-.image {
+    ion-card-title {
+      font-size: 19px;
+    }
+  
+  ion-card-subtitle {
+    font-size: 14px;
+    text-align: center;
+  }
+    
+    ion-icon {
+    
+      font-size: 30px;
+    }
+  }    
 
-  height: 130px;
-  width: 130px;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-
-} // sets product image size and sets position as centered
-
-ion-fab-button {
-  height: 70px;
-  width: 70px;
-} // sets size of cart button
+ .image {
+  border: 1px solid #0742e5;
+  border-radius: 50%;
+  box-shadow: 0 0 2px #000;
+  height: 100%;
+  width: 100%;
+  
+  } 
 
 .cart-icon {
   font-size: 50px;
