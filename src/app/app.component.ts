@@ -14,6 +14,7 @@ export class AppComponent {
   home: any;
   page: any;
   pages:any[]=[];
+  
   constructor(
     private platform: Platform,
     private splashScreen: SplashScreen,
@@ -24,6 +25,7 @@ export class AppComponent {
     {
 
     this.initializeApp();
+   
   }
 
   initializeApp() {
@@ -55,10 +57,6 @@ export class AppComponent {
         pagename: "Feedback",
         icon: "star-outline",
         url : "/feedback"
-      }, {
-        pagename: "Chat Support",
-        icon: "chatbubble-outline",
-        url: "/chat-support"
       }, {
         pagename: "Info",
         icon: "information-circle-outline",

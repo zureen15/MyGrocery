@@ -55,10 +55,6 @@ const routes: Routes = [
     loadChildren: () => import('./pages/feedback/feedback.module').then( m => m.FeedbackPageModule)
   },
   {
-    path: 'chat-support',
-    loadChildren: () => import('./pages/chat-support/chat-support.module').then( m => m.ChatSupportPageModule)
-  },
-  {
     path: 'info',
     loadChildren: () => import('./pages/info/info.module').then( m => m.InfoPageModule)
   },

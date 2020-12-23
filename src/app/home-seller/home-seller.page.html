@@ -6,4 +6,14 @@
 
 <ion-content>
 
+  <ion-content class="padding">
+    <ion-item
+      *ngFor="let p of products | async">
+      <ion-label>
+        <h2>{{ p.name }}</h2>
+        <p>Price: {{ p.price }}</p>
+      </ion-label>
+    </ion-item>
+  </ion-content>
+
 </ion-content>

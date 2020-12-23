@@ -9,22 +9,25 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
 
+<ion-content padding>
 
-  <ion-item lines="full" (click)="appRating()">
+  <div text-center style= "padding-bottom: 15px">
     <ion-icon name="star-half" slot="start" color="danger"></ion-icon>
-    Rate Us
-  </ion-item>
+    <ion-label>Rate Us</ion-label>
+ </div>
 
-  <div class="rating">
-    <div class="stars">
-         <span class="fa fa-star checked"></span>
-         <span class="fa fa-star checked"></span>
-         <span class="fa fa-star checked"></span>
-         <span class="fa fa-star"></span>
-         <span class="fa fa-star"></span>
-    </div>
-  </div>
+ 
+    <ion-fab vertical="center" horizontal= "center" slot= "fixed">
+      <ion-fab-button>
+        <ion-icon name="logo-vimeo"></ion-icon>
+      </ion-fab-button>
+      <ion-fab-list side="start">
+        <ion-fab-button click()= "dope()" color= "secondary"><ion-icon name="thumbs-up"></ion-icon></ion-fab-button>
+      </ion-fab-list>
+      <ion-fab-list side="end">
+        <ion-fab-button click()= "nope()" color= "danger"><ion-icon name="thumbs-down"></ion-icon></ion-fab-button>
+      </ion-fab-list>
+    </ion-fab>
 
 </ion-content>
