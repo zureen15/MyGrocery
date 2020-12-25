@@ -16,6 +16,8 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { environment } from '../environments/environment';
 import { MyCartPageModule } from './pages/my-cart/my-cart.module';
 
+import { FingerprintAIO } from '@ionic-native/fingerprint-aio/ngx';
+
 
 
 @NgModule({
@@ -27,7 +29,9 @@ import { MyCartPageModule } from './pages/my-cart/my-cart.module';
   providers: [
     StatusBar,
     SplashScreen,
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    FingerprintAIO
+     
   ],
   bootstrap: [AppComponent]
 })
