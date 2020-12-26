@@ -15,18 +15,19 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { environment } from '../environments/environment';
 import { MyCartPageModule } from './pages/my-cart/my-cart.module';
 
+import { FingerprintAIO } from '@ionic-native/fingerprint-aio/ngx';
 
 
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, AngularFireDatabaseModule,AngularFireModule.initializeApp(environment.firebase), 
-    AngularFireAuthModule, AngularFirestoreModule, MyCartPageModule
+    AngularFireAuthModule, AngularFirestoreModule, MyCartPageModule,
   ],
   providers: [
     StatusBar,
     SplashScreen,
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },  FingerprintAIO
   ],
   bootstrap: [AppComponent]
 })

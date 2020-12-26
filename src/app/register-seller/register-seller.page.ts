@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 
 
 import { AngularFireAuth } from '@angular/fire/auth';
-import { FingerprintAIO } from '@ionic-native/fingerprint-aio/ngx';
+
 
 @Component({
   selector: 'app-register-seller',

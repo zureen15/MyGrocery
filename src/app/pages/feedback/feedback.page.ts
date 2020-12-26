@@ -1,22 +1,17 @@
-import { Component } from '@angular/core';
-
-import { Platform } from '@ionic/angular';
-import { SplashScreen } from '@ionic-native/splash-screen/ngx';
-import { StatusBar } from '@ionic-native/status-bar/ngx';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-feedback',
   templateUrl: './feedback.page.html',
   styleUrls: ['./feedback.page.scss'],
 })
-export class FeedbackPage  {
+export class FeedbackPage implements OnInit {
 
- 
+
   constructor() { 
-   
   }
+ 
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
 }

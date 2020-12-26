@@ -2,11 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { AngularFireAuth } from '@angular/fire/auth';
-import { FingerprintAIO } from '@ionic-native/fingerprint-aio';
-
-
-
-
+import { FingerprintAIO } from '@ionic-native/fingerprint-aio/ngx';
 
 
 
@@ -19,13 +15,13 @@ import { FingerprintAIO } from '@ionic-native/fingerprint-aio';
 export class LoginPage implements OnInit {
 
   user = {
-      username : '',
+      
       email: '',
      password: ''
   }
   
 
-  constructor(private router: Router,
+  constructor(private router: Router, private faio: FingerprintAIO,
                 public ngFireAuth: AngularFireAuth) {}
 
   ngOnInit() {
@@ -42,7 +38,22 @@ export class LoginPage implements OnInit {
     } else {
       alert ('login failed!');
     }
+    
  }
+ logIn() {
+ this.faio.show({
+  title: 'Biometric Authentication', // (Android Only) | optional | Default: "<APP_NAME> Biometric Sign On"
+  subtitle: 'Coolest Plugin ever',// (Android Only) | optional | Default: null
+  description: 'Please authenticate', // optional | Default: null
+  fallbackButtonTitle: 'Use Backup', // optional | When disableBackup is false defaults to "Use Pin".
+                                     // When disableBackup is true defaults to "Cancel"
+  disableBackup:true,  // optional | default: false
+})
+.then((result: any) => console.log(result))
+.catch((error: any) => console.log(error));
+
+ }
+
+  
  
 }
-  
