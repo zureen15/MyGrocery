@@ -11,7 +11,9 @@ import 'firebase/firestore';
 })
 export class HomeSellerPage implements OnInit {
 
-  private products: Observable<any[]>; 
+  private products: Observable<any[]>;
+
+  selectTabs: '0';
 
   constructor(private firestore: AngularFirestore)
   {
