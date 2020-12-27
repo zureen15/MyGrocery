@@ -17,7 +17,7 @@ export class HomeSellerPage implements OnInit {
 
   
   private products: Observable<any[]>; //products observable declared
-  productsCollectionRef: AngularFirestoreCollection<'products'>;
+ 
   
   constructor(private firestore: AngularFirestore)
   {
@@ -32,6 +32,11 @@ export class HomeSellerPage implements OnInit {
   getProducts() {
     return this.products;
 } //getProducts method declared and returns products when initialised
+
+updateProducts(id: string, product: products): Promise<void> {
+  return this.products.doc(id).update(product);
+}
+
 
     
 }
