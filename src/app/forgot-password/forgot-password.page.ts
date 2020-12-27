@@ -27,5 +27,38 @@ export class ForgotPasswordPage implements OnInit {
 
   ngOnInit() {
 
+  }
+  async openLoader() {
+    const loading = await this.loadingController.create({
+      message: 'Please Wait ...',
+      duration: 2000
+    });
+    await loading.present();
+  }
+  async closeLoading() {
+    return await this.loadingController.dismiss();
+  }
+
+  recover() {
+    this.fireauth.sendPasswordResetEmail(this.user.email)
+      .then(data => {
+        console.log(data);
+        this.presentToast('Password reset email sent',  'bottom', 1000); // this is toastController
+        this.router.navigateByUrl('/login');
+      })
+      .catch(err => {
+        console.log(` failed ${err}`);
+        this.error = err.message;
+      });
+  }
+
+  async presentToast(message, position, duration) {
+    const toast = await this.toastController.create({
+      message,
+      duration,
+      position
+    });
+    toast.present();
+  }
+
     }
-}
