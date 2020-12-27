@@ -10,6 +10,6 @@ export class ForgotPasswordPage implements OnInit {
   constructor() { }
 
   ngOnInit() {
-  }
 
+    }
 }

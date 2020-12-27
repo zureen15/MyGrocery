@@ -12,4 +12,4 @@ export class RewardsAndCouponsPage implements OnInit {
   ngOnInit() {
   }
 
-}
+  }

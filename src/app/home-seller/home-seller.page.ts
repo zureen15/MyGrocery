@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { AngularFirestore } from '@angular/fire/firestore';
-import { Observable } from 'rxjs'; //imports Observable
+import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
 import { products } from '../models/products';
 import 'firebase/firestore';
+import { Observable } from 'rxjs';
+
 
 @Component({
   selector: 'app-home-seller',
@@ -11,19 +12,26 @@ import 'firebase/firestore';
 })
 export class HomeSellerPage implements OnInit {
 
-  private products: Observable<any[]>;
-
   selectTabs: '0';
 
+
+  
+  private products: Observable<any[]>; //products observable declared
+  productsCollectionRef: AngularFirestoreCollection<'products'>;
+  
   constructor(private firestore: AngularFirestore)
   {
-    this.products = this.firestore.collection<any>('products').valueChanges();
+    this.products = this.firestore.collection<any>('products').valueChanges(); //valueChanges method returns latest values from products collection from within the Firestore database    }
+
    }
 
-  ngOnInit() {
-  }
+  ngOnInit() { 
+    
+   }
 
-  getProduct(): Observable<any[]> {
-    return this.firestore.collection<any>('products').valueChanges();
-  }
+  getProducts() {
+    return this.products;
+} //getProducts method declared and returns products when initialised
+
+    
 }
