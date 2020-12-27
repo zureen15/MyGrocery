@@ -6,11 +6,6 @@ import { FingerprintAIO } from '@ionic-native/fingerprint-aio/ngx';
 
 
 
-
-
-
-
-
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
