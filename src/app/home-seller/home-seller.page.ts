@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
+import { AngularFirestore } from '@angular/fire/firestore';
 import { products } from '../models/products';
 import 'firebase/firestore';
 import { Observable } from 'rxjs';
@@ -33,9 +33,7 @@ export class HomeSellerPage implements OnInit {
     return this.products;
 } //getProducts method declared and returns products when initialised
 
-updateProducts(id: string, product: products): Promise<void> {
-  return this.products.doc(id).update(product);
-}
+
 
 
     
