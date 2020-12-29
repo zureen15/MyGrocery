@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { AppRate } from '@ionic-native/app-rate/ngx';
+
 
 import { FeedbackPageRoutingModule } from './feedback-routing.module';
 
@@ -17,7 +17,7 @@ import { FeedbackPage } from './feedback.page';
     IonicModule,
     FeedbackPageRoutingModule
   ],providers: [
-  AppRate,
+  
 ],
   declarations: [FeedbackPage]
 })
