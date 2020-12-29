@@ -14,8 +14,6 @@ export class HomeSellerPage implements OnInit {
 
   selectTabs: '0';
 
-
-  
   private products: Observable<any[]>; //products observable declared
  
   

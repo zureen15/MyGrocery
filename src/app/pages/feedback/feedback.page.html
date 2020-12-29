@@ -12,14 +12,8 @@
 
 <ion-content>
 
-  <div class="rating">
-    <div class="stars">
-         <span class="fa fa-star checked"></span>
-         <span class="fa fa-star checked"></span>
-         <span class="fa fa-star checked"></span>
-         <span class="fa fa-star"></span>
-         <span class="fa fa-star"></span>
-    </div>
-  </div>
+  <div class="alert alert-danger">Adding bootstrap</div>
+
+  <span class="fa fa-star fa-2x" [class.rate] = "isRated" (click) = "changeRating()"></span>
 
 </ion-content>
