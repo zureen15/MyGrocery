@@ -1,4 +1,3 @@
-import { Identifiers } from '@angular/compiler';
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Observable } from 'rxjs'; //imports Observable
