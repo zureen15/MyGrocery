@@ -7,12 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FeedbackPage implements OnInit {
 
-  isRated = false;
-
-  changeRating() {
-    this.isRated = !this.isRated;
-  }
-
+  starRating = 0; 
 
   constructor() { 
   }

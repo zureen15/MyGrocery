@@ -12,8 +12,6 @@
 
 <ion-content>
 
-  <div class="alert alert-danger">Adding bootstrap</div>
-
-  <span class="fa fa-star fa-2x" [class.rate] = "isRated" (click) = "changeRating()"></span>
+  <ngb-rating [max]="5" [(rate)]="starRating" [readonly]="false"></ngb-rating>
 
 </ion-content>

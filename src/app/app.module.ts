@@ -16,13 +16,14 @@ import { environment } from '../environments/environment';
 import { MyCartPageModule } from './pages/my-cart/my-cart.module';
 
 import { FingerprintAIO } from '@ionic-native/fingerprint-aio/ngx';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, AngularFireDatabaseModule,AngularFireModule.initializeApp(environment.firebase), 
-    AngularFireAuthModule, AngularFirestoreModule, MyCartPageModule,
+    AngularFireAuthModule, AngularFirestoreModule, MyCartPageModule, NgbModule,
   ],
   providers: [
     StatusBar,
