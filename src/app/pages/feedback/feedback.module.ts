@@ -18,7 +18,6 @@ import { FeedbackPage } from './feedback.page';
     FeedbackPageRoutingModule,
     NgbModule
   ],providers: [
-
 ],
   declarations: [FeedbackPage]
 })
