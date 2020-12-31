@@ -1,11 +1,8 @@
 import { Injectable } from '@angular/core';
 import { off } from 'process';
 import {BehaviorSubject, Observable, of } from 'rxjs';
-<<<<<<< Updated upstream
-import { IonicStorageModule} from '@ionic/storage' ; 
-=======
+
 import { Storage } from '@ionic/storage' ;
->>>>>>> Stashed changes
 
 const TOKEN_KEY = 'user-access-token'; 
 
