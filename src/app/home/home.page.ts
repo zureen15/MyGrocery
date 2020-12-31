@@ -18,6 +18,7 @@ export class HomePage implements OnInit {
   
   cart = []; //cart variable declared
   private products: Observable<any[]>; //products observable declared
+  
 
   selectTabs: '0';
 
@@ -41,7 +42,6 @@ export class HomePage implements OnInit {
         this.products = this.MyCartService.getProducts();
         this.cart = this.MyCartService.getCart();
     } //ngOnInit method declares getProducts and getCart methods and initialised from within the CartService
-
     
 
     addToCart(product) {

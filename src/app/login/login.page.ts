@@ -4,7 +4,6 @@ import { Router } from '@angular/router';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { FingerprintAIO } from '@ionic-native/fingerprint-aio/ngx';
 
- 
 
 
 @Component({
@@ -39,10 +38,11 @@ export class LoginPage implements OnInit {
       alert ('login failed!');
     }
     
+    
  }
+ 
  logIn() {
  this.faio.show({
-  cancelButtonTitle: 'Cancel',
   title: 'Biometric Authentication', // (Android Only) | optional | Default: "<APP_NAME> Biometric Sign On"
   subtitle: 'Coolest Plugin ever',// (Android Only) | optional | Default: null
   description: 'Please authenticate', // optional | Default: null
@@ -50,15 +50,8 @@ export class LoginPage implements OnInit {
                                      // When disableBackup is true defaults to "Cancel"
   disableBackup:true,  // optional | default: false
 })
-.then((result: any) =>{ console.log(result)
-    alert("Successfully Authenticated!")
-    this.router.navigate(['/home']);
-})
-
-.catch((error: any) =>{ console.log(error)
-     alert ("Match not found!")
-     
-    });
+.then((result: any) => console.log(result))
+.catch((error: any) => console.log(error));
 
  }
 
