@@ -13,10 +13,15 @@
   },
   "private": true,
   "dependencies": {
+    "-": "0.0.1",
     "@angular/common": "~10.0.0",
     "@angular/core": "~10.0.0",
-    "@angular/fire": "^6.1.1",
+    "@angular/fire": "^6.1.4",
     "@angular/forms": "~10.0.0",
+<<<<<<< Updated upstream
+=======
+    "@angular/localize": "^11.0.5",
+>>>>>>> Stashed changes
     "@angular/platform-browser": "~10.0.0",
     "@angular/platform-browser-dynamic": "~10.0.0",
     "@angular/router": "~10.0.0",
@@ -24,15 +29,26 @@
     "@ionic-native/fingerprint-aio": "^5.22.0-beta-1",
     "@ionic-native/splash-screen": "^5.0.0",
     "@ionic-native/status-bar": "^5.0.0",
+<<<<<<< Updated upstream
     "@ionic/angular": "^5.0.0",
     "cordova": "^10.0.0",
     "firebase": "^8.1.1",
+=======
+    "@ionic/angular": "^5.5.2",
+    "@ionic/storage": "^2.3.1",
+    "@ng-bootstrap/ng-bootstrap": "^8.0.0",
+    "bootstrap": "^4.5.3",
+    "firebase": "^8.2.1",
+    "ionic4-star-rating": "^1.1.1",
+    "marked": "^1.2.7",
+>>>>>>> Stashed changes
     "rxjs": "~6.5.5",
+    "save": "^2.4.0",
     "tslib": "^2.0.0",
     "zone.js": "~0.10.3"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "^0.1100.2",
+    "@angular-devkit/build-angular": "^0.1100.5",
     "@angular/cli": "10.0.8",
     "@angular/compiler": "~10.0.0",
     "@angular/compiler-cli": "~10.0.0",
@@ -41,9 +57,14 @@
     "@ionic/lab": "3.2.9",
     "@types/jasmine": "~3.5.0",
     "@types/jasminewd2": "~2.0.3",
-    "@types/node": "^12.11.1",
+    "@types/node": "^12.19.11",
     "codelyzer": "^6.0.0",
+<<<<<<< Updated upstream
     "cordova-plugin-fingerprint-aio": "^4.0.1",
+=======
+    "cordova-plugin-apprate": "^1.7.1",
+    "cordova-plugin-fingerprint-aio": "^4.0.2",
+>>>>>>> Stashed changes
     "jasmine-core": "~3.5.0",
     "jasmine-spec-reporter": "~5.0.0",
     "karma": "~5.0.0",

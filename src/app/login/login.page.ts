@@ -39,6 +39,7 @@ export class LoginPage implements OnInit {
     }
     
  }
+ 
  logIn() {
  this.faio.show({
   title: 'Biometric Authentication', // (Android Only) | optional | Default: "<APP_NAME> Biometric Sign On"
