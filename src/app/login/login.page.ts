@@ -32,6 +32,8 @@ export class LoginPage implements OnInit {
     const user = await this.ngFireAuth.signInWithEmailAndPassword(this.user.email, this.user.password);
     console.log(user);
 
+    
+
     if (user.user.email) {
       this.router.navigate(['/home']);
     } else {
