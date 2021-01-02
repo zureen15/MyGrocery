@@ -10,16 +10,15 @@ import 'firebase/firestore'
 export class MyCartService {
 
   private products: Observable<any[]>; //products observable declared
+  private cart = []; //cart variable declared
 
 
-    private cart = []; //cart variable declared
-
-
-    constructor(private firestore: AngularFirestore, ) //Firestore import declared in constructor class
+    constructor(private firestore: AngularFirestore) //Firestore import declared in constructor class
     
     {
         this.products = this.firestore.collection<any>('products').valueChanges(); //valueChanges method returns latest values from products collection from within the Firestore database    }
-    }
+  }
+  
     getProducts() {
         return this.products;
     } //getProducts method declared and returns products when initialised

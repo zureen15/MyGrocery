@@ -17,18 +17,20 @@
       <ion-card-title>Contact Info</ion-card-title>
     </ion-card-header>
   
-    <ion-card-content>
+    <ion-card-content *ngFor = "let prof of profiles | async">
       <ion-item>
         <ion-label position="floating">Username</ion-label>
-        <ion-input [(ngModel)]="profile.username"></ion-input>
+        <ion-input> {{ prof.name }}</ion-input>
       </ion-item>
       <ion-item>
         <ion-label position="floating">Phone Number</ion-label>
-        <ion-input [(ngModel)]="profile.phone"></ion-input>
+        <ion-input>{{ prof.phone }}</ion-input>
       </ion-item>
     </ion-card-content>
   </ion-card>
 
-  <ion-button color="danger" expand="block" (click)="createProfile()">Save</ion-button>
+  <ion-button color="danger" expand="block" (click)="addProfile()">Save</ion-button>
+
+  <ion-button color="primary" expand="block" (click)="updateProfile()">Update</ion-button>
 
 </ion-content>

@@ -17,7 +17,7 @@ import 'firebase/firestore';
 export class HomePage implements OnInit {
   
   cart = []; //cart variable declared
-  private products: Observable<any[]>; //products observable declared
+  products: any; //products observable declared
   
 
   selectTabs: '0';

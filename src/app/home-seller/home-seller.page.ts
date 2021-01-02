@@ -14,13 +14,12 @@ export class HomeSellerPage implements OnInit {
 
   selectTabs: '0';
 
-  private products: Observable<any[]>; //products observable declared
- 
+  products: Observable<any[]>; //products observable declared
   
   constructor(private firestore: AngularFirestore)
   {
     this.products = this.firestore.collection<any>('products').valueChanges(); //valueChanges method returns latest values from products collection from within the Firestore database    }
-
+    
    }
 
   ngOnInit() { 
@@ -31,8 +30,4 @@ export class HomeSellerPage implements OnInit {
     return this.products;
 } //getProducts method declared and returns products when initialised
 
-
-
-
-    
 }

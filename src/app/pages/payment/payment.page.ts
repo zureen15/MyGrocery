@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
+
 @Component({
   selector: 'app-payment',
   templateUrl: './payment.page.html',
@@ -7,9 +8,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PaymentPage implements OnInit {
 
-  constructor() { }
+  selectTabs: '0';
 
-  ngOnInit() {
-  }
 
+  
+  constructor()
+  {
+   
+   }
+
+  ngOnInit() { 
+    
+   }
+
+
+    
 }
