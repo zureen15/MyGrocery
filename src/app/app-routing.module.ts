@@ -6,7 +6,7 @@ const routes: Routes = [
   
   {
     path: '',
-    redirectTo: 'login',
+    redirectTo: 'user-type',
     pathMatch: 'full'
   },
   {
@@ -75,8 +75,7 @@ const routes: Routes = [
     loadChildren: () => import('./user-type/user-type.module').then( m => m.UserTypePageModule)
   },
 
-  
- 
+
  
 ];
 

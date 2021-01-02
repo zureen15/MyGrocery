@@ -11,25 +11,5 @@
 
 <ion-content>
 
-  <div class="chart-container" style="position: relative; height:30vh; width:100vw">
-
- <canvas id= "grocery-chart"></canvas>
-
-  </div>
-
-  <ion-card color="secondary">
-    <ion-card-header>
-        <ion-card-title style="text-align: center;">Product List</ion-card-title>
-        <ion-card-subtitle style="text-align: center;">171</ion-card-subtitle>
-    </ion-card-header>
-</ion-card>
-
-<ion-item *ngFor="let p of products | async">
-      <ion-label>
-        <h2>{{ p.name }}</h2>
-        <p>Price: {{ p.price }}</p>
-      </ion-label>
-
-    </ion-item>
 
 </ion-content>
