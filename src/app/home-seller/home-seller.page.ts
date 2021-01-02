@@ -11,19 +11,18 @@ import { Chart } from 'chart.js';
   styleUrls: ['./home-seller.page.scss'],
 })
 export class HomeSellerPage implements OnInit {
-
+ 
   products: Observable<any[]>; //products observable declared
   
   constructor(private firestore: AngularFirestore)
   {
     this.products = this.firestore.collection<any>('products').valueChanges(); //valueChanges method returns latest values from products collection from within the Firestore database    }
-    
-   }
+  }
 
   ngOnInit() { 
 
     this.showChart();
-    
+
    }
 
    showChart() {

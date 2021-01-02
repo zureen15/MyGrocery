@@ -74,9 +74,8 @@ const routes: Routes = [
     path: 'user-type',
     loadChildren: () => import('./user-type/user-type.module').then( m => m.UserTypePageModule)
   },
+  
 
-
- 
 ];
 
 @NgModule({
