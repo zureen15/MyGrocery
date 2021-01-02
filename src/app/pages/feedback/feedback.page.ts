@@ -9,6 +9,13 @@ export class FeedbackPage implements OnInit {
 
   starRating = 0; 
 
+  feed = {
+    feedback: ''
+  }
+  logForm() {
+    console.log(this.feed)
+  }
+
   constructor() { 
   }
  

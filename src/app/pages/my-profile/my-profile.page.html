@@ -19,18 +19,14 @@
   
     <ion-card-content *ngFor = "let prof of profiles | async">
       <ion-item>
-        <ion-label position="floating">Username</ion-label>
-        <ion-input> {{ prof.name }}</ion-input>
+        <ion-input> Username: {{ prof.name }}</ion-input>
       </ion-item>
       <ion-item>
-        <ion-label position="floating">Phone Number</ion-label>
-        <ion-input>{{ prof.phone }}</ion-input>
+        <ion-input>Phone Number: {{ prof.phone }}</ion-input>
       </ion-item>
     </ion-card-content>
   </ion-card>
 
-  <ion-button color="danger" expand="block" (click)="addProfile()">Save</ion-button>
-
-  <ion-button color="primary" expand="block" (click)="updateProfile()">Update</ion-button>
+  <ion-button color="danger" expand="block" (click)="updateProfile()">SAVE</ion-button>
 
 </ion-content>

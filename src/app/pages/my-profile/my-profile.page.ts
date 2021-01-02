@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { AngularFirestore } from '@angular/fire/firestore';
 import { ProfileService, Profile } from 'src/app/profile.service';
 import { Observable } from 'rxjs';
 import { ToastController } from '@ionic/angular';
+import { AngularFirestore } from '@angular/fire/firestore';
+import { Router } from '@angular/router';
+import 'firebase/firestore';
  
 
 @Component({
@@ -19,7 +21,7 @@ export class MyProfilePage implements OnInit {
 
   private profiles: Observable<Profile[]>;
 
-  constructor (private firestore: AngularFirestore, private ProfileService: ProfileService, private toastCtrl: ToastController) { 
+  constructor (private firestore: AngularFirestore, private router: Router, private ProfileService: ProfileService, private toastCtrl: ToastController) { 
 
   }
 
@@ -28,12 +30,12 @@ export class MyProfilePage implements OnInit {
     this.profiles = this.ProfileService.getProfiles();
   }
 
-  addProfile() {
-    this.ProfileService.addProfile(this.profile).then(() => {
-      this.showToast('Profile added');
-    }, error => {
-      console.log(error);
+  ionViewWillEnter() {
+    if (this.profile.id) {
+      this.ProfileService.getProfile(this.profile.id).subscribe(profile => {
+        this.profile = profile;
       });
+    }
   }
 
   updateProfile() {

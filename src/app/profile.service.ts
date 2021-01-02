@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument, DocumentReference } from '@angular/fire/firestore';
 import { map, take } from 'rxjs/operators';
 import { Observable } from 'rxjs';
- 
+import 'firebase/firestore'
 
 export interface Profile {
   id?: string;
@@ -44,9 +44,6 @@ export class ProfileService {
     );
   }
 
-  addProfile(profile: Profile): Promise<DocumentReference> {
-    return this.profileCollection.add(profile);
-  }
  
   updateProfile(profile: Profile): Promise<void> {
     return this.profileCollection.doc(profile.id).update({ name: profile.name, phone: profile.phone });

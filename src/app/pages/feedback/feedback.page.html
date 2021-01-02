@@ -15,4 +15,12 @@
   <ion-text> Rate Our App! </ion-text>
   <ngb-rating [max]="5" [(rate)]="starRating" [readonly]="false"></ngb-rating>
 
+  <form (ngSubmit)="logForm()">
+    <ion-item>
+      <ion-label>Write your feedback</ion-label>
+      <ion-input [(ngModel)]="feed.feedback" name="description"></ion-input>
+    </ion-item>
+    <ion-button color="danger" expand="block" type="submit">Submit</ion-button>
+  </form>
+
 </ion-content>

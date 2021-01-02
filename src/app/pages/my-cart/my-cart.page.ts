@@ -14,7 +14,7 @@ import 'firebase/firestore';
 })
 export class MyCartPage implements OnInit {
 
-  cart = []; //cart variable declared
+    cart = []; //cart variable declared
 
     selectedProducts = []; //selectedProducts variable declared
 
