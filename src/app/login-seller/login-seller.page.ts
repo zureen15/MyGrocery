@@ -12,13 +12,12 @@ import { FingerprintAIO } from '@ionic-native/fingerprint-aio/ngx';
 export class LoginSellerPage implements OnInit {
 
   user = {
-    username : '',
     email: '',
    password: ''
 }
 
   constructor(private router: Router,
-    public ngFireAuth: AngularFireAuth) { }
+    public ngFireAuth: AngularFireAuth, private faio : FingerprintAIO) { }
 
   ngOnInit() {
   }
@@ -33,4 +32,26 @@ export class LoginSellerPage implements OnInit {
       }
   }
 
-}
+  logIn() {
+    this.faio.show({
+     cancelButtonTitle: 'Cancel',
+     title: 'Biometric Authentication', // (Android Only) | optional | Default: "<APP_NAME> Biometric Sign On"
+     subtitle: 'Coolest Plugin ever',// (Android Only) | optional | Default: null
+     description: 'Please authenticate', // optional | Default: null
+     fallbackButtonTitle: 'Use Backup', // optional | When disableBackup is false defaults to "Use Pin".
+                                        // When disableBackup is true defaults to "Cancel"
+     disableBackup:true,  // optional | default: false
+   })
+   .then((result: any) =>{ console.log(result)
+       alert("Successfully Authenticated!")
+       this.router.navigate(['/home-seller']);
+   })
+
+   .catch((error: any) =>{ console.log(error)
+        alert ("Match not found!")
+
+       });
+
+    }
+
+} 

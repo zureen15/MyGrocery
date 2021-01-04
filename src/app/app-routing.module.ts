@@ -63,10 +63,6 @@ const routes: Routes = [
     loadChildren: () => import('./login-seller/login-seller.module').then( m => m.LoginSellerPageModule)
   },
   {
-    path: 'register-seller',
-    loadChildren: () => import('./register-seller/register-seller.module').then( m => m.RegisterSellerPageModule)
-  },
-  {
     path: 'home-seller',
     loadChildren: () => import('./home-seller/home-seller.module').then( m => m.HomeSellerPageModule)
   },

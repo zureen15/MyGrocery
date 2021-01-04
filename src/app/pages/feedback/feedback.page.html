@@ -12,15 +12,20 @@
 
 <ion-content>
 
-  <ion-text> Rate Our App! </ion-text>
+  <ion-text style="text-align: center;"> Rate Our App! </ion-text>
   <ngb-rating [max]="5" [(rate)]="starRating" [readonly]="false"></ngb-rating>
 
   <form (ngSubmit)="logForm()">
+   
     <ion-item>
       <ion-label>Write your feedback</ion-label>
-      <ion-input [(ngModel)]="feed.feedback" name="description"></ion-input>
+
+      <ion-input type= "text" maxlength= "40" [(ngModel)]="feed.feedback" name="description"></ion-input>
     </ion-item>
+
+  <ion-footer>
     <ion-button color="danger" expand="block" type="submit">Submit</ion-button>
+  </ion-footer>
   </form>
 
 </ion-content>
