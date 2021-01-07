@@ -33,6 +33,7 @@ export class LoginSellerPage implements OnInit {
   }
 
   logIn() {
+
     this.faio.show({
      cancelButtonTitle: 'Cancel',
      title: 'Biometric Authentication', // (Android Only) | optional | Default: "<APP_NAME> Biometric Sign On"
