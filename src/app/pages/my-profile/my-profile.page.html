@@ -12,21 +12,24 @@
 
 <ion-content>
 
-  <ion-card>
-    <ion-card-header>
-      <ion-card-title>Contact Info</ion-card-title>
-    </ion-card-header>
-  
-    <ion-card-content *ngFor = "let prof of profiles | async">
-      <ion-item>
-        <ion-input> Username: {{ prof.name }}</ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-input>Phone Number: {{ prof.phone }}</ion-input>
-      </ion-item>
-    </ion-card-content>
-  </ion-card>
+  <form (ngSubmit)="logForm()">
+   
+    <ion-item>
+      <ion-label>Name: </ion-label>
 
-  <ion-button color="danger" expand="block" (click)="updateProfile()">SAVE</ion-button>
+      <ion-input type= "text" [(ngModel)]="profile.name" name="description"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Phone: </ion-label>
+
+      <ion-input type= "text" [(ngModel)]="profile.phone" name="description"></ion-input>
+    </ion-item>
+
+  <ion-footer>
+    <ion-button color="danger" expand="block" type="submit">Create</ion-button>
+  </ion-footer>
+  </form>
+
 
 </ion-content>
