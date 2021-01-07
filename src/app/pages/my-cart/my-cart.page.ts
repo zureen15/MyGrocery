@@ -46,8 +46,8 @@ remove(product) {
 }
 //remove method declared and initialised from the removeItemFromCart method from within the CartService
 
-Total(){
-    return this.cart.reduce((a, b) => a + (a.count * b.price), 0 );
+getTotal(){
+    return this.cart.reduce((i, j) => i + j.price * j.amount, 0 );
 }
 //getTotal method declared and the reduce function declares the accumulated result of the array which is the price multipled by the amount
 
@@ -70,4 +70,10 @@ async cartEmpty() {
    await alert.present();
    this.modalCtrl.dismiss();
 }
+
+async checkout(){
+  this.router.navigate(['/payment']);
+  this.modalCtrl.dismiss();
+}
+
 }

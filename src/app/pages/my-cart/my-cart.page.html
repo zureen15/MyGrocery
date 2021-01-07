@@ -28,7 +28,7 @@
                 </ion-button>
             </ion-col>
             <ion-col size="1" class="ion-allign-self-center">
-              {{ p.count }}
+              {{ p.amount }}
             </ion-col>
             <ion-col size="2" class="ion-allign-self-center">
                 <ion-button fill="clear" (click)="addToCart(p)">
@@ -41,7 +41,7 @@
               <b>{{ p.name }} </b>
             </ion-col>
             <ion-col size="3" class="ion-text-end">
-              {{ p.count * p.price | currency:'RM' }}
+              {{ p.amount * p.price | currency:'RM' }}
             </ion-col>
           </ion-row>
         </ion-grid>
@@ -49,9 +49,13 @@
     </ion-list>
     <ion-list>
     <ion-item>
-            Total: <span slot="end">{{ total | currency: 'RM':'symbol' }}</span>
+            Total: <span slot="end">{{ getTotal() | currency: 'RM':'symbol' }}</span>
     </ion-item>
   </ion-list>
+
+  <ion-button expand="block" (click)="checkout()"> 
+    Checkout
+  </ion-button>
 
 </div>
 </ion-content>
