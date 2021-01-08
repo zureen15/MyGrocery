@@ -6,7 +6,7 @@
       </ion-buttons>
   
       <ion-buttons slot="end">
-          <ion-button (click)="openCart()">
+          <ion-button color="dark" (click)="openCart()">
               <ion-badge *ngIf="cart.length > 0">{{ cart.length }}</ion-badge>
               <ion-icon name="cart" slot="icon-only" ></ion-icon>  
           </ion-button>

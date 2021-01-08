@@ -39,19 +39,19 @@ export class LoginSellerPage implements OnInit {
           console.log(result)
       
   
-    this.faio.show({
-     cancelButtonTitle: 'Cancel',
-     title: 'Biometric Authentication', // (Android Only) | optional | Default: "<APP_NAME> Biometric Sign On"
-     subtitle: 'Coolest Plugin ever',// (Android Only) | optional | Default: null
-     description: 'Please authenticate', // optional | Default: null
-     fallbackButtonTitle: 'Use Backup', // optional | When disableBackup is false defaults to "Use Pin".
-                                        // When disableBackup is true defaults to "Cancel"
-     disableBackup:true,  // optional | default: false
-   })
-   .then((result: any) =>{ console.log(result)
-       alert("Successfully Authenticated!")
-       this.router.navigate(['/home-seller']);
-   })
+          this.faio.show({
+            cancelButtonTitle: 'Cancel',
+            title: 'Biometric Authentication', // (Android Only) | optional | Default: "<APP_NAME> Biometric Sign On"
+            subtitle: 'Coolest Plugin ever',// (Android Only) | optional | Default: null
+            description: 'Please authenticate', // optional | Default: null
+            fallbackButtonTitle: 'Use Backup', // optional | When disableBackup is false defaults to "Use Pin".
+                                               // When disableBackup is true defaults to "Cancel"
+            disableBackup:true,  // optional | default: false
+          })
+          .then((result: any) =>{ console.log(result)
+              alert("Successfully Authenticated!")
+              this.router.navigate(['/home-seller']);
+          })
    
    .catch((error: any) =>{ console.log(error)
         alert ("Match not found!")

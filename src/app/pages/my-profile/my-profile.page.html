@@ -12,24 +12,31 @@
 
 <ion-content>
 
+  <ion-card>
+
+    <ion-card-content>
   <form (ngSubmit)="logForm()">
    
+    <br>
     <ion-item>
       <ion-label>Name: </ion-label>
 
       <ion-input type= "text" [(ngModel)]="profile.name" name="description"></ion-input>
     </ion-item>
 
+  <br>
     <ion-item>
       <ion-label>Phone: </ion-label>
 
       <ion-input type= "text" [(ngModel)]="profile.phone" name="description"></ion-input>
     </ion-item>
-
-  <ion-footer>
+  
     <ion-button color="danger" expand="block" type="submit">Create</ion-button>
-  </ion-footer>
+  
   </form>
+
+</ion-card-content>
+</ion-card>
 
 
 </ion-content>
