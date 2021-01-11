@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 
 import { AngularFireAuth } from '@angular/fire/auth';
 
+import { ToastController } from '@ionic/angular';
 
 
 @Component({
@@ -22,7 +23,7 @@ export class RegisterPage implements OnInit {
 
   }
 
-  constructor(private router: Router,
+  constructor(private router: Router, private toastController: ToastController,
     public ngFireAuth: AngularFireAuth) {}
 
   ngOnInit() {
@@ -32,14 +33,24 @@ export class RegisterPage implements OnInit {
     
     const user = await this.ngFireAuth.createUserWithEmailAndPassword( this.user.email, this.user.password);
     console.log(user);
+    await user.user.sendEmailVerification();
+    this.presentToast('Verification email sent',  'bottom', 1000); // this is toastController
+    this.router.navigate(['/login']);
+
+      
  
-    if (user.user.email) {
-      alert('registration succesful!');
-      this.router.navigate(['/home']);
-    }  else {
-      alert ('registration failed!');
-    }
+    
   }
+
+    async presentToast(message, position, duration) {
+    const toast = await this.toastController.create({
+      message,
+      duration,
+      position
+    });
+    toast.present();
+  }
+
    
 
 }

@@ -4,6 +4,10 @@ import { Router } from '@angular/router';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { FingerprintAIO } from '@ionic-native/fingerprint-aio/ngx';
 
+import { AlertController } from '@ionic/angular';
+import firebase from 'firebase/app'; 
+
+
 
 
 @Component({
@@ -18,14 +22,22 @@ export class LoginPage implements OnInit {
       email: '',
      password: ''
   }
+
+  
   
 
-  constructor(private router: Router, private faio: FingerprintAIO,
+  constructor(private router: Router, private faio: FingerprintAIO, private alertCtrl: AlertController,
                 public ngFireAuth: AngularFireAuth) {}
 
   ngOnInit() {
+
+    
   
   }
+
+  
+
+ 
   
 
  async login () {
@@ -59,7 +71,7 @@ disableBackup:true,  // optional | default: false
 })
 .then((result: any) =>{ console.log(result)
  alert("Successfully Authenticated!")
- this.router.navigate(['/home-seller']);
+ this.router.navigate(['/home']);
 })
 
 .catch((error: any) =>{ console.log(error)
@@ -73,4 +85,6 @@ disableBackup:true,  // optional | default: false
 });
 
  }
+
+
 }
