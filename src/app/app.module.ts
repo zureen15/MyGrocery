@@ -17,6 +17,7 @@ import { MyCartPageModule } from './pages/my-cart/my-cart.module';
 
 import { FingerprintAIO } from '@ionic-native/fingerprint-aio/ngx';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { PayPal, PayPalPayment, PayPalConfiguration } from '@ionic-native/paypal';
 
 import { IonicStorageModule } from '@ionic/storage';
 
@@ -29,7 +30,7 @@ import { IonicStorageModule } from '@ionic/storage';
   ],
   providers: [
     StatusBar,
-    SplashScreen,
+    SplashScreen, PayPal,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },  FingerprintAIO
   ],
   bootstrap: [AppComponent]

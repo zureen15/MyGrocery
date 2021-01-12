@@ -5,7 +5,7 @@ import { Router } from '@angular/router'; //imports Router
 import { ModalController } from '@ionic/angular'; //imports ModalController
 import { MyCartService } from '../my-cart.service';
 import { MyCartPage } from '../pages/my-cart/my-cart.page';
-import { products } from '../models/products';
+import { Products } from '../models/products';
 import 'firebase/firestore';
 
 
