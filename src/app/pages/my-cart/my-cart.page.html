@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-toolbar color="primary">
+  <ion-toolbar>
     <ion-title>My Cart</ion-title>
     <ion-buttons slot="start">
 
@@ -11,31 +11,16 @@
 
 <ion-content>
   <div class="ion-text-end">
-    <ion-button (click)="close()" fill="clear" color="danger"> 
-      <ion-icon name="close" slot="start"></ion-icon> 
+    <ion-button (click)="close()" fill="clear" color="danger">
+      <ion-icon name="close" slot="start"></ion-icon>
     </ion-button>
   </div>
 
-<div class="ion-padding">
+  <div class="ion-padding">
 
     <ion-list>
       <ion-item *ngFor="let p of cart" class="ion-text-wrap">
         <ion-grid>
-          <ion-row class="ion-allign-items-center">
-            <ion-col size="2" class="ion-allign-self-center">
-                <ion-button *ngIf="cart.length > 0" fill="clear" (click)="remove(p)">
-                    <ion-icon name="remove"></ion-icon> 
-                </ion-button>
-            </ion-col>
-            <ion-col size="1" class="ion-allign-self-center">
-              {{ p.amount }}
-            </ion-col>
-            <ion-col size="2" class="ion-allign-self-center">
-                <ion-button fill="clear" (click)="addToCart(p)">
-                    <ion-icon name="add"></ion-icon>
-                </ion-button>
-            </ion-col>
-          </ion-row>
           <ion-row>
             <ion-col size="9">
               <b>{{ p.name }} </b>
@@ -44,18 +29,42 @@
               {{ p.amount * p.price | currency:'RM' }}
             </ion-col>
           </ion-row>
+          <ion-row class="ion-allign-items-center">
+            <ion-col size="2" class="ion-allign-self-center">
+              <ion-button *ngIf="cart.length > 0" fill="clear" (click)="remove(p)">
+                <ion-icon name="remove"></ion-icon>
+              </ion-button>
+            </ion-col>
+            <ion-col size="1" class="ion-allign-self-center">
+              {{ p.amount }}
+            </ion-col>
+
+            <ion-col size="2" class="ion-allign-self-center">
+              <ion-button fill="clear" (click)="addToCart(p)">
+                <ion-icon name="add"></ion-icon>
+              </ion-button>
+            </ion-col>
+          </ion-row>
         </ion-grid>
       </ion-item>
     </ion-list>
     <ion-list>
-    <ion-item>
-            Total: <span slot="end">{{ getTotal() | currency: 'RM':'symbol' }}</span>
-    </ion-item>
-  </ion-list>
+      <ion-item>
+        <ion-grid>
+          <ion-row>
+            <ion-col size="9">
+              Total: <span slot='end'>{{ Total() | currency:'RM' }}</span>
+            </ion-col>
+            <ion-col size="3" class="ion-text-end">
+              {{ Total() | currency: 'RM':'symbol' }}
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-item>
+    </ion-list>
+    <ion-button expand="full" (click)="checkout(Total())" value="Close [x]">
+      Checkout
+    </ion-button>
 
-  <ion-button expand="block" (click)="checkout()"> 
-    Checkout
-  </ion-button>
-
-</div>
+  </div>
 </ion-content>
