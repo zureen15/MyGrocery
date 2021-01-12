@@ -64,11 +64,44 @@
   
       </ion-item>
 
-     </div>
+  </div>
 
-     <div [hidden] = "selectTabs != '2'">
-
-     </div>
-      
-
+  <div [hidden]="selectTabs != '2'">
+    <div class="card">
+      <img src="assets/icon/ayam9.jpg" class="image" alt="Chicken Neck" style="width:50%">
+      <h1>Chicken Neck</h1>
+      <p class="price">RM20.00</p>
+      <p>1.5kg - 1.7kg</p>
+      <p>In Stock: 20 </p>
+      <p>
+        <ion-button expand="full" (click)="updateStock()">
+          Update Stock
+        </ion-button>
+      </p>
+    </div>
+    <div class="card">
+      <img src="assets/icon/ayam1.jpg" class="image" alt="Ayam Kampubg" style="width:50%">
+      <h1>Ayam Kampung</h1>
+      <p class="price">RM20.00</p>
+      <p>1.5kg - 1.7kg</p>
+      <p>In Stock: 20 </p>
+      <p>
+        <ion-button expand="full" (click)="updateStock()">
+          Update Stock
+        </ion-button>
+      </p>
+    </div>
+    <div class="card">
+      <img src="assets/icon/bawangM.jpg" class="image" alt="Ayam Segar" style="width:50%">
+      <h1>Bawang Merah</h1>
+      <p class="price">RM8.00</p>
+      <p>1 kg</p>
+      <p>In Stock: 20 </p>
+      <p>
+        <ion-button expand="full" (click)="updateStock()">
+          Update Stock
+        </ion-button>
+      </p>
+    </div>
+  </div>
 </ion-content>

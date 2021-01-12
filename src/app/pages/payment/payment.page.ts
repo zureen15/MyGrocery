@@ -71,14 +71,12 @@ export class PaymentPage implements OnInit {
       );
   }
 
-  payWithCard() {
+  payWithCash() {
     let navigationExtras = {
       queryParams: {
-        special: "cardpayment",
+        special: "cashpayment",
       },
     };
-    this.router.navigate(["payment-card"]);
+    this.router.navigate(["payment-cash"]);
   }
-
-  payWithCash() {}
 }
